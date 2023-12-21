@@ -1,7 +1,26 @@
 body {
-    background: radial-gradient(circle at 10% 20%, rgb(255, 200, 124) 0.1%, rgb(252, 251, 121) 90%);
+    /* background: radial-gradient(circle at 10% 20%, rgb(255, 200, 124) 0.1%, rgb(252, 251, 121) 90%); */
+    background-image: linear-gradient(to right top, #01473f, #0a704d, #489849, #91be35, #ebdd12);
 }
 
-.header-custom {
+.custom-header {
    background-color: white;
+   color: #01473f;
 }
+
+.custom-logo {
+    margin-left: 25px;
+}
+
+.custom-footer {
+    background-color: #e99607;
+}
+
+.headline{
+    color: #01302b;
+}
+
+/* .highlight {
+    background-color: #EBDD12;
+    display: inline; 
+} */

@@ -14,19 +14,22 @@
 
 <body>
 
-    <header class="text-left py-3 px-4 header-custom">
-        <h3 class="h3">
+    <header class="text-left p-4 custom-header">
+        <h3 class="h3 custom-logo">
             <i class="fa-solid fa-magnifying-glass" style="color: #e99607;"></i>
             Job Search Tracker
         </h3>
     </header>
 
+    <section class="cards-section"> 
     <!--  Job positions Cards -->
-    <div class="container-fluid py-3 my-2">
+    
+    <div class="container-fluid mt-5 mb-5">
+        
         <div class="row justify-content-center">
-        <h4 class="my-5 text-center headline">JOBS YOU'VE APPLIED</h4>
+          <h4 class="h4 text-center headline highlight">JOBS YOU'VE APPLIED</h4>
         <!--  Job Position Card 1 -->
-          <div class="cardContainer col-lg-4 col-md-6 col-sm-9 py-2">
+          <div class="cardContainer col-lg-4 col-md-6 col-sm-9 p-3">
             <div class="card align-items-center custom-card-border">
               <div class="card-body text-center">
                 <h5 class="card-title">Position</h5>
@@ -42,7 +45,7 @@
         <!-- End  Job Position card 1 -->
 
          <!--  Job Position Card 1 -->
-         <div class="cardContainer col-lg-4 col-md-6 col-sm-9 py-2">
+         <div class="cardContainer col-lg-4 col-md-6 col-sm-9 p-3">
             <div class="card align-items-center custom-card-border">
               <div class="card-body text-center">
                 <h5 class="card-title">Position</h5>
@@ -58,7 +61,7 @@
         <!-- End  Job Position card 1 -->
 
          <!--  Job Position Card 1 -->
-         <div class="cardContainer col-lg-4 col-md-6 col-sm-9 py-2">
+         <div class="cardContainer col-lg-4 col-md-6 col-sm-9 p-3">
             <div class="card align-items-center custom-card-border">
               <div class="card-body text-center">
                 <h5 class="card-title">Position</h5>
@@ -74,7 +77,7 @@
         <!-- End  Job Position card 1 -->
 
          <!--  Job Position Card 1 -->
-         <div class="cardContainer col-lg-4 col-md-6 col-sm-9 py-2">
+         <div class="cardContainer col-lg-4 col-md-6 col-sm-9 p-3">
             <div class="card align-items-center custom-card-border">
               <div class="card-body text-center">
                 <h5 class="card-title">Position</h5>
@@ -90,7 +93,7 @@
         <!-- End  Job Position card 1 -->
 
          <!--  Job Position Card 1 -->
-         <div class="cardContainer col-lg-4 col-md-6 col-sm-9 py-2">
+         <div class="cardContainer col-lg-4 col-md-6 col-sm-9 p-3">
             <div class="card align-items-center custom-card-border">
               <div class="card-body text-center">
                 <h5 class="card-title">Position</h5>
@@ -106,7 +109,7 @@
         <!-- End  Job Position card 1 -->
 
          <!--  Job Position Card 1 -->
-         <div class="cardContainer col-lg-4 col-md-6 col-sm-9 py-2">
+         <div class="cardContainer col-lg-4 col-md-6 col-sm-9 p-3">
             <div class="card align-items-center custom-card-border">
               <div class="card-body text-center">
                 <h5 class="card-title">Position</h5>
@@ -124,12 +127,19 @@
 
         </div>
     </div>
+</section>
 
-    <div class="container-fluid text-center py-3 my-2 map-container">
-        <h4 class="my-5">COMPANIES LOCATION</h4>
-        <hr class="hr" /> 
-        <div class="col-12"id="map" style="height: 400px;"></div>
-    </div>
+    <section class="map-section">
+        <div class="container-fluid text-center py-3 my-2 map-container">
+            <h4 class="headline highlight">COMPANIES LOCATION</h4>
+            <hr class="hr" /> 
+            <div class="col-12"id="map" style="height: 400px;"></div>
+        </div>
+    </section>
+
+    <footer class="footer text-left py-3 px-4 custom-footer">
+        Footer
+    </footer>
     
       <!-- Day.js -->
       <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
