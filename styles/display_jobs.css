@@ -14,6 +14,10 @@ body {
     margin-left: 25px;
 }
 
+.custom-dropdown {
+    background-color: transparent;
+}
+
 .custom-footer {
     background-color: #e99607;
 }
