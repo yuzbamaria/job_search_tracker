@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif !important;
+    background-image: linear-gradient(to right top, #01473f, #0a704d, #489849, #91be35, #ebdd12);
+}
+
+.custom-header {
+   background-color: white;
+   color: #01473f;
+}
+
+.custom-logo {
+    margin-left: 25px;
+}
+
+.custom-dropdown {
+    background-color: transparent;
+}
+
+.custom-footer {
+    background-color: #e99607;
+}
+
+.headline{
+    color: #01302b;
+}
+
+/* .highlight {
+    background-color: #EBDD12;
+    display: inline; 
+} */
