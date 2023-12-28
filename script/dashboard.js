@@ -22,58 +22,127 @@ $(document).ready(function() {
             title: 'My location'
             });
           }
-        
-        // When a user clicks the "Show on map" button 
-        // after entering a city name in the #cityInput field, 
-        // the addMarkerForCity function is called with the entered city name, 
-        // and it attempts to geocode the city, update the marker on the map, 
-        // and adjust the map's center and zoom level accordingly. 
-        // If the user hasn't entered a city name, an alert is displayed prompting them to do so.
     
-        // Select "Show on map" button
-        // let searchBtn = $('#search-button');
-        //  Create an event listener attached to the "Show on map" button 
-        // This event listener listens for a click on the button and calls 
-        // the addMarkerForCity function with the value of the 
-        // #cityInput field as an argument
-        // searchBtn.on('click', function(e){
-        //     e.preventDefault();
-            // Retrieve the value entered in the #cityInput field
-            // let cityInput = $('#cityInput').val();
-            // Check if user entered a city
-            // if (cityInput) {
-                // Call the addMarkerForCity function and pass the entered city name (cityInput) 
-                // as an argument to the function
-        //         addMarkerForCity(cityInput);
-        //       } else {
-        //         alert('Please enter a city before searching.');
-        //       }
-        // });
+
+    // Function to create a card based on user input
+    function createCard(title, company, location, type, stage) {
+        // Get the card section
+        const cardSection = document.getElementById('testCardsCreation');
+
+        // Create card container for eacg card
+        const cardContainer = document.createElement('div');
+        cardContainer.className = 'cardContainer col-lg-4 col-md-6 col-sm-9 p-3';
+
+        // Create card elements
+        const card = document.createElement('div');
+        card.className = 'card align-items-center custom-card-border shadow';
+
+        const cardBody = document.createElement('div');
+        cardBody.className = 'card-body';
+
+        const titleContainer = document.createElement('div');
+        titleContainer.className =  'text-center mt-3';
+
+        // Create and append card content
+        const cardTitle = document.createElement('h5');
+        cardTitle.className = 'card-title';
+        cardTitle.textContent = title;
+
+        const cardCompany = document.createElement('h6');
+        cardCompany.className = 'card-text mb-2';
+        cardCompany.textContent = company;
+
+        const paragraphContainer = document.createElement('div');
+        paragraphContainer.className = 'text-left mb-4';
+
+        const cardLocation = document.createElement('p');
+        cardLocation.className = 'card-text';
+        cardLocation.innerHTML = `<i class="fa-solid fa-location-arrow"></i> ${location}`;
+
+        const cardType = document.createElement('p');
+        cardType.className = 'card-text';
+        cardType.innerHTML = `<i class="fa-solid fa-house-laptop"></i> ${type}`;
+
+        const cardStage = document.createElement('p');
+        cardStage.className = 'card-text';
+        cardStage.innerHTML = `<i class="fa-solid fa-clipboard-question"></i> ${stage}`;
+
+        const seeJobButton = document.createElement('a');
+        seeJobButton.href = '#';
+        seeJobButton.className = 'btn btn-warning shadow';
+        seeJobButton.textContent = 'See job posting';
+
+        const deleteCardButton = document.createElement('button');
+        deleteCardButton.className = 'btn btn-secondary m-2 shadow';
+        deleteCardButton.type = 'button';
+        deleteCardButton.textContent = 'Delete card';
+
+        // Append title elements to titleContainer
+        titleContainer.appendChild(cardTitle);
+        titleContainer.appendChild(cardCompany);
+
+        // Append paragraphs to paragraphContainer
+        paragraphContainer.appendChild(cardLocation);
+        paragraphContainer.appendChild(cardType);
+        paragraphContainer.appendChild(cardStage);
+        // Append elements to the card body
+        cardBody.appendChild(titleContainer);
+        cardBody.appendChild(cardTitle);
+        cardBody.appendChild(cardCompany);
+        cardBody.appendChild(paragraphContainer);
+        cardBody.appendChild(cardLocation);
+        cardBody.appendChild(cardType);
+        cardBody.appendChild(cardStage);
+        cardBody.appendChild(seeJobButton);
+        cardBody.appendChild(deleteCardButton);
+
+        // Append card body to the card
+        card.appendChild(cardBody);
+
+        // Append card to cardContainer
+        cardContainer.appendChild(card);
+        // Append the card to the card container
+        cardSection.appendChild(cardContainer);
+    }
+
+    // Simulate user input and create a card
+    // Calls the createCard function with specific values, 
+    // simulating the scenario where a user has inputted data for a job
+    createCard('Software Engineer', 'Example Company', 'New York', 'Full-time', 'Interview');
+
+    // Create a JS object to simulate user input 
+    // with job-related information from home page 
+    // (job title, company name, location (city), job type, and job stage).
+    // Save data to local storage for testing
+    const userData = {
+        title: 'Web Developer',
+        company: 'Test Company',
+        location: 'San Francisco',
+        type: 'Remote',
+        stage: 'Applied',
+    };
+    localStorage.setItem('userInput', JSON.stringify(userData));
+
+    // Retrieve data from local storage and create a card
+    const storedData = localStorage.getItem('userInput');
+    if (storedData) {
+        const parsedData = JSON.parse(storedData);
+        createCard(parsedData.title, parsedData.company, parsedData.location, parsedData.type, parsedData.stage);
+    }
+
+
     
-        // function addMarkerForCity(city) {
-        //     // Create a new Geocoder object from the Google Maps API
-        //     let geocoder = new google.maps.Geocoder();
-        //     // Use the Geocoder to convert the city name into geographic coordinates
-        //     geocoder.geocode({'address': city}, function(results, status) {
-        //     // Check if the geocoding operation was successful
-        //     if (status === 'OK') {
-        //         // Update the position of the existing marker on the map to the geocoded location
-        //         // marker = new google.maps.Marker({
-        //         marker.setPosition(results[0].geometry.location);
-        //         // Center the map on the new marker position
-        //         map.setCenter(results[0].geometry.location);
-        //         // Set the zoom level of the map to 14 (you may adjust this value)
-        //         map.setZoom(12);
-        //         // map: map,
-        //         // position: results[0].geometry.location,
-        //         // title: city
-        //     } else {
-        //         alert('Geocode was not successful for the following reason: ' + status);
-        //     }
-        //     });
-        // }
+    /* // When the page loads, display all cards that user created (get from localStorage)
+    // Check if something exists in localStorage
+    // Create a function to display job cards
+    function displayJobCards() {
+        // Retrieve jobCards array from localStorage and parse it
+        let jobCardsFromLocalStorage = JSON.parse(localStorage.getItem('#job-cards'));
+        // Log the parsed jobCards array to the console
+        console.log(jobCardsFromLocalStorage);
+    } */
     
-    });
+});
     
     
     
