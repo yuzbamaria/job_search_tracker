@@ -25,7 +25,7 @@ $(document).ready(function() {
     
 
     // Function to create a card based on user input
-    function createCard(title, company, location, type, stage) {
+    function createCard(position, company, location, posting, type, stage) {
         // Get the card section
         const cardSection = document.getElementById('testCardsCreation');
 
@@ -46,7 +46,7 @@ $(document).ready(function() {
         // Create and append card content
         const cardTitle = document.createElement('h5');
         cardTitle.className = 'card-title';
-        cardTitle.textContent = title;
+        cardTitle.textContent = position;
 
         const cardCompany = document.createElement('h6');
         cardCompany.className = 'card-text mb-2';
@@ -68,9 +68,10 @@ $(document).ready(function() {
         cardStage.innerHTML = `<i class="fa-solid fa-clipboard-question"></i> ${stage}`;
 
         const seeJobButton = document.createElement('a');
-        seeJobButton.href = '#';
+        seeJobButton.href = posting;
         seeJobButton.className = 'btn btn-warning shadow';
         seeJobButton.textContent = 'See job posting';
+        seeJobButton.target = "_blank";
 
         const deleteCardButton = document.createElement('button');
         deleteCardButton.className = 'btn btn-secondary m-2 shadow';
@@ -108,18 +109,28 @@ $(document).ready(function() {
     // Simulate user input and create a card
     // Calls the createCard function with specific values, 
     // simulating the scenario where a user has inputted data for a job
-    createCard('Software Engineer', 'Example Company', 'New York', 'Hybrid', 'Interview');
+    // createCard('Software Engineer', 'Example Company', 'New York', 'Hybrid', 'Interview');
 
     // Create a JS object to simulate user input 
     // with job-related information from home page 
     // (job title, company name, location (city), job type, and job stage).
     // Save data to local storage for testing
+   
+    let position = localStorage.getItem("position");
+    let company = localStorage.getItem("company");
+    let location = localStorage.getItem("location");
+    let posting = localStorage.getItem("posting");
+
+    if (position !== null && company !== null && location !== null && posting !== null) {
+        createCard(position, company, location, posting);
+    }
     const userData = {
-        title: 'Web Developer',
-        company: 'Test Company',
-        location: 'San Francisco',
-        type: 'Remote',
-        stage: 'Applied',
+        position: position,
+        company: company,
+        location: location,
+        posting: posting,
+        type: type,
+        stage: stage,
     };
     localStorage.setItem('userInput', JSON.stringify(userData));
 
@@ -127,7 +138,7 @@ $(document).ready(function() {
     const storedData = localStorage.getItem('userInput');
     if (storedData) {
         const parsedData = JSON.parse(storedData);
-        createCard(parsedData.title, parsedData.company, parsedData.location, parsedData.type, parsedData.stage);
+        createCard(parsedData.position, parsedData.company, parsedData.location, parsedData.posting, parsedData.type, parsedData.stage);
     }
 
 
