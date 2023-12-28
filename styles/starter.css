@@ -6,8 +6,8 @@ body {
 }
 
 .custom-header {
-    background-color: white;
-    color: #01473f;
+    background-image: linear-gradient(to right top, #01473f, #0a704d, #489849, #91be35, #ebdd12);
+    color:white;
  }
  
  .custom-logo {
@@ -17,5 +17,9 @@ body {
  .description {
     color: #01473f;
     font-size: 20px;
+ }
+
+ .start {
+    font-size: 16px;
  }
 
