@@ -108,7 +108,7 @@ $(document).ready(function() {
     // Simulate user input and create a card
     // Calls the createCard function with specific values, 
     // simulating the scenario where a user has inputted data for a job
-    createCard('Software Engineer', 'Example Company', 'New York', 'Full-time', 'Interview');
+    createCard('Software Engineer', 'Example Company', 'New York', 'Hybrid', 'Interview');
 
     // Create a JS object to simulate user input 
     // with job-related information from home page 
