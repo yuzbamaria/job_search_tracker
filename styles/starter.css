@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif !important;
+    /* background-image: linear-gradient(to right top, #01473f, #0a704d, #489849, #91be35, #ebdd12); */
+}
+
+.custom-header {
+    background-image: linear-gradient(to right top, #01473f, #0a704d, #489849, #91be35, #ebdd12);
+    color:white;
+ }
+ 
+ .custom-logo {
+     margin-left: 25px;
+ }
+
+ .description {
+    color: #01473f;
+    font-size: 20px;
+ }
+
+ .start {
+    font-size: 16px;
+ }
+
