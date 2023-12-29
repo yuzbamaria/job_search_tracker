@@ -75,6 +75,7 @@ $(document).ready(function() {
 
         const deleteCardButton = document.createElement('button');
         deleteCardButton.className = 'btn btn-secondary m-2 shadow';
+        deleteCardButton.id = 'deleteBtn';
         deleteCardButton.type = 'button';
         deleteCardButton.textContent = 'Delete card';
 
@@ -120,6 +121,7 @@ $(document).ready(function() {
     let company = localStorage.getItem("company");
     let location = localStorage.getItem("location");
     let posting = localStorage.getItem("posting");
+    // add variables for type and stage
 
     if (position !== null && company !== null && location !== null && posting !== null) {
         createCard(position, company, location, posting);
@@ -140,6 +142,18 @@ $(document).ready(function() {
         const parsedData = JSON.parse(storedData);
         createCard(parsedData.position, parsedData.company, parsedData.location, parsedData.posting, parsedData.type, parsedData.stage);
     }
+
+    function deleteCard() {
+        // let deleteBtn = $('#deleteBtn');
+        $(document).on('click', '#deleteBtn', function (e) {
+            e.preventDefault();
+            // Find the closest card container from the clicked delete button
+            const cardContainer = $(this).closest('.cardContainer');
+            // Remove the card container from the DOM
+            cardContainer.remove();
+        });
+    }
+    // deleteCard()
 
 
     
