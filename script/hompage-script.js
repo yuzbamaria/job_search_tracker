@@ -109,6 +109,7 @@ function submitForm() {
 // Event handler for key press
 $(".form-control").on("keyup", function (event) {
   if (event.key === "Enter") {
+    event.preventDefault();
     submitForm();
   }
 });
