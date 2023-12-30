@@ -1,10 +1,10 @@
-// Ninjas
-
 const apiKey = "GN3fBk50uO/Bo4r+mFcxFA==q2Wkb58IWKjctbbi";
 
 const button = $(".btn");
 const container = $(".container-quote");
 
+// Initialize the array to store user input objects
+var userInputArray = JSON.parse(localStorage.getItem("userInputArray")) || [];
 
 // Function to fetch and display a quote
 function fetchAndDisplayQuote() {
@@ -21,33 +21,27 @@ function fetchAndDisplayQuote() {
     })
     .then(function (data) {
       // Assuming the API response has a 'results' property
-      // console.log(data[0].quote);
-      // console.log(data);
-
       // Creating the element
-      var headerEL = $("<div>")
+      var headerEL = $("<div>");
       var h2El = $("<h2>");
       var pEl = $("<p>");
-      var citeEl = $("<cite>")
+      var citeEl = $("<cite>");
       const divEl = $("<div>");
-      
 
       // adding the attributes or class
       headerEL.addClass("card-header");
-      h2El.addClass("blockquote","mb-3");
-      pEl.addClass("blockquote-footer", "mb-3")
-      container.addClass("shadow")
+      h2El.addClass("blockquote", "mb-3");
+      pEl.addClass("blockquote-footer", "mb-3");
+      container.addClass("shadow");
 
       // Adding text
       headerEL.text(data[0].category);
       h2El.text(data[0].quote);
       citeEl.text(data[0].author);
 
-
       // Append to the respective element
-      pEl.append(citeEl)
+      pEl.append(citeEl);
       container.append(divEl);
-      // container.append(headerEL);
       divEl.append(h2El);
       divEl.append(pEl);
     })
@@ -68,6 +62,7 @@ function autoReload() {
 $(document).ready(function () {
   autoReload();
 });
+
 // Function to handle form submission
 function submitForm() {
   var isEmpty = false;
@@ -90,33 +85,44 @@ function submitForm() {
     $("#myModal").modal("show");
     closeBtn();
   } else {
-    // If none of the input fields are left empty, a success message will populate
-    console.log("Form submitted successfully");
-    // Set the local storage when the form is submitted successfully
-    localStorage.setItem("position", positionValue);
-    localStorage.setItem("company", companyValue);
-    localStorage.setItem("location", locationValue);
-    localStorage.setItem("posting", postingValue);
+    // Create an object representing the user input
+    const userInputObject = {
+      position: positionValue,
+      company: companyValue,
+      location: locationValue,
+      posting: postingValue,
+    };
+
+    // Add the user input object to the array
+    userInputArray.push(userInputObject);
+
+    // Update localStorage with the new userInputArray
+    localStorage.setItem("userInputArray", JSON.stringify(userInputArray));
 
     // Show the success alert modal
     $("#mySuccessModal").modal("show");
     closeBtn();
 
-    console.log(localStorage.getItem("position"));
+    // Clear form inputs
+    $(".form-control").val("");
   }
 }
 
 // Event handler for key press
-$(".form-control").on("keyup", function (event) {
+$(".form-control").on("keydown", function (event) {
   if (event.key === "Enter") {
     event.preventDefault();
     submitForm();
+    displayOnPage();
+    console.log(userInputArray);
   }
 });
 
 // Event handler for submit button
 $("#submit-button").on("click", function () {
   submitForm();
+  displayOnPage();
+  console.log(userInputArray);
 });
 
 // Event listener for the clear button
@@ -133,3 +139,24 @@ function closeBtn() {
     $("#mySuccessModal").modal("hide");
   });
 }
+
+// Function to display the current submitted info on the page
+function displayOnPage() {
+  // Display the most recent user input
+  const lastIndex = userInputArray.length - 1;
+
+ 
+
+  $("#position-title").text("Position: " + userInputArray[lastIndex].position);
+  $("#company-title").text("Company: " + userInputArray[lastIndex].company);
+  $("#location-title").text("Location: " + userInputArray[lastIndex].location);
+  $("#posting-title").text("Posting: " + userInputArray[lastIndex].posting);
+}
+
+$(document).ready(function () {
+  // Add event listener to the button Start Journey to link index file to the home page
+  $("#btn-dashboard").on("click", function () {
+    // Redirect the user to the 'homepage.html' page
+    window.location.pathname = "/dashboard.html";
+  });
+});
