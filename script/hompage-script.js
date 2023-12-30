@@ -123,7 +123,7 @@ $(".form-control").on("keydown", function (event) {
         ", Posting: " +
         storedPosting
     );
-    $(".form-control").val("");
+    
   }
 });
 
@@ -142,7 +142,7 @@ $("#submit-button").on("click", function () {
       ", Posting: " +
       storedPosting
   );
-  $(".form-control").val("");
+  
 });
 
 // Event listener for the clear button
@@ -188,6 +188,6 @@ $(document).ready(function () {
   $("#btn-dashboard").on('click', function () {
      
       // Redirect the user to the 'homepage.html' page
-      window.location.pathname = "./test/index.html" 
+      window.location.pathname = "/job_search_tracker/dashboard.html" 
   });
 });
