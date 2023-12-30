@@ -5,6 +5,10 @@ const apiKey = "GN3fBk50uO/Bo4r+mFcxFA==q2Wkb58IWKjctbbi";
 const button = $(".btn");
 const container = $(".container-quote");
 
+var storedPosition = [];
+var storedCompany = [];
+var storedLocation = [];
+var storedPosting = [];
 
 // Function to fetch and display a quote
 function fetchAndDisplayQuote() {
@@ -25,27 +29,25 @@ function fetchAndDisplayQuote() {
       // console.log(data);
 
       // Creating the element
-      var headerEL = $("<div>")
+      var headerEL = $("<div>");
       var h2El = $("<h2>");
       var pEl = $("<p>");
-      var citeEl = $("<cite>")
+      var citeEl = $("<cite>");
       const divEl = $("<div>");
-      
 
       // adding the attributes or class
       headerEL.addClass("card-header");
-      h2El.addClass("blockquote","mb-3");
-      pEl.addClass("blockquote-footer", "mb-3")
-      container.addClass("shadow")
+      h2El.addClass("blockquote", "mb-3");
+      pEl.addClass("blockquote-footer", "mb-3");
+      container.addClass("shadow");
 
       // Adding text
       headerEL.text(data[0].category);
       h2El.text(data[0].quote);
       citeEl.text(data[0].author);
 
-
       // Append to the respective element
-      pEl.append(citeEl)
+      pEl.append(citeEl);
       container.append(divEl);
       // container.append(headerEL);
       divEl.append(h2El);
@@ -90,8 +92,6 @@ function submitForm() {
     $("#myModal").modal("show");
     closeBtn();
   } else {
-    // If none of the input fields are left empty, a success message will populate
-    console.log("Form submitted successfully");
     // Set the local storage when the form is submitted successfully
     localStorage.setItem("position", positionValue);
     localStorage.setItem("company", companyValue);
@@ -102,21 +102,47 @@ function submitForm() {
     $("#mySuccessModal").modal("show");
     closeBtn();
 
-    console.log(localStorage.getItem("position"));
+    // console.log(localStorage.getItem("position"));
   }
 }
 
 // Event handler for key press
-$(".form-control").on("keyup", function (event) {
+$(".form-control").on("keydown", function (event) {
   if (event.key === "Enter") {
     event.preventDefault();
     submitForm();
+    storedInput();
+    displayOnPage();
+    console.log(
+      "Position: " +
+        storedPosition +
+        ", Company: " +
+        storedCompany +
+        ", Location: " +
+        storedLocation +
+        ", Posting: " +
+        storedPosting
+    );
+    $(".form-control").val("");
   }
 });
 
 // Event handler for submit button
 $("#submit-button").on("click", function () {
   submitForm();
+  storedInput();
+  displayOnPage();
+  console.log(
+    "Position: " +
+      storedPosition +
+      ", Company: " +
+      storedCompany +
+      ", Location: " +
+      storedLocation +
+      ", Posting: " +
+      storedPosting
+  );
+  $(".form-control").val("");
 });
 
 // Event listener for the clear button
@@ -133,3 +159,35 @@ function closeBtn() {
     $("#mySuccessModal").modal("hide");
   });
 }
+
+console.log(storedPosition);
+
+function storedInput() {
+  // storedPosition.push(positionValue);
+  // storedCompany.push(companyValue);
+  // storedLocation.push(locationValue);
+  // storedPosting.push(postingValue);
+
+  storedPosition.push(localStorage.getItem("position"));
+  storedCompany.push(localStorage.getItem("company"));
+  storedLocation.push(localStorage.getItem("location"));
+  storedPosting.push(localStorage.getItem("posting"));
+}
+
+function displayOnPage() {
+ 
+
+  displayDiv.text();
+  $("#display-section").append(displayDiv);
+}
+
+
+$(document).ready(function () {
+
+  // Add event listener to the button Start Journey to link index file to home page
+  $("#btn-dashboard").on('click', function () {
+     
+      // Redirect the user to the 'homepage.html' page
+      window.location.pathname = "./test/index.html" 
+  });
+});
