@@ -11,7 +11,7 @@
       crossorigin="anonymous"
     />
     <!-- css -->
-    <link rel="stylesheet" href="../job_search_tracker/styles/style.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
 
     <!-- font awesome cdn -->
     <link
@@ -218,23 +218,28 @@
     <div class="card align-items-center custom-card-border shadow">
       <div class="card-body">
         <div class="text-center mt-3">
-          <h5 class="card-title">Position</h5>
-          <h6 class="card-text mb-4">Company name</h6>
+          <h5 class="card-title">Submitted Info</h5>
+      
         </div>
-        <div class="text-left mb-4">
-          <p class="card-text">
-            <i class="fa-solid fa-location-arrow"></i>
-            Job location
+        <div>
+          <p class="card-text"id="position-title">
+            <i class="fa-solid fa-clipboard-user" id="postion-icon"></i>
+            Position
           </p>
-          <p class="card-text">
-            <i class="fa-solid fa-house-laptop"></i>
-            Job type
+          <p class="card-text"id="company-title">
+            <i class="fa-regular fa-building"></i>
+            Company Name
           </p>
-          <p class="card-text">
-            <i class="fa-solid fa-clipboard-question"></i>
-            Job stage
+          <p class="card-text"id="location-title">
+            <i class="fa-solid fa-map-location-dot"></i>
+            Job Location
+          </p>
+          <p class="card-text"id="posting-title">
+            <i class="fa-solid fa-signs-post"></i>
+            Job Posting
           </p>
         </div>
+        <br>
         <a href="#" class="btn btn-warning shadow"> See job posting</a>
         <!-- <div class="btn-group p-2">
           <button class="btn btn-secondary shadow" type="button">
@@ -324,6 +329,6 @@
       crossorigin="anonymous"
     ></script>
     <!-- <script src="/starter/script.js"></script> -->
-    <script src="../job_search_tracker/script/hompage-script.js"></script>  
+    <script src="./script/hompage-script.js"></script>  
   </body>
 </html>

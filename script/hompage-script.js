@@ -1,14 +1,10 @@
-// Ninjas
-
 const apiKey = "GN3fBk50uO/Bo4r+mFcxFA==q2Wkb58IWKjctbbi";
 
 const button = $(".btn");
 const container = $(".container-quote");
 
-var storedPosition = [];
-var storedCompany = [];
-var storedLocation = [];
-var storedPosting = [];
+// Initialize the array to store user input objects
+var userInputArray = JSON.parse(localStorage.getItem("userInputArray")) || [];
 
 // Function to fetch and display a quote
 function fetchAndDisplayQuote() {
@@ -25,9 +21,6 @@ function fetchAndDisplayQuote() {
     })
     .then(function (data) {
       // Assuming the API response has a 'results' property
-      // console.log(data[0].quote);
-      // console.log(data);
-
       // Creating the element
       var headerEL = $("<div>");
       var h2El = $("<h2>");
@@ -49,7 +42,6 @@ function fetchAndDisplayQuote() {
       // Append to the respective element
       pEl.append(citeEl);
       container.append(divEl);
-      // container.append(headerEL);
       divEl.append(h2El);
       divEl.append(pEl);
     })
@@ -70,6 +62,7 @@ function autoReload() {
 $(document).ready(function () {
   autoReload();
 });
+
 // Function to handle form submission
 function submitForm() {
   var isEmpty = false;
@@ -92,17 +85,26 @@ function submitForm() {
     $("#myModal").modal("show");
     closeBtn();
   } else {
-    // Set the local storage when the form is submitted successfully
-    localStorage.setItem("position", positionValue);
-    localStorage.setItem("company", companyValue);
-    localStorage.setItem("location", locationValue);
-    localStorage.setItem("posting", postingValue);
+    // Create an object representing the user input
+    const userInputObject = {
+      position: positionValue,
+      company: companyValue,
+      location: locationValue,
+      posting: postingValue,
+    };
+
+    // Add the user input object to the array
+    userInputArray.push(userInputObject);
+
+    // Update localStorage with the new userInputArray
+    localStorage.setItem("userInputArray", JSON.stringify(userInputArray));
 
     // Show the success alert modal
     $("#mySuccessModal").modal("show");
     closeBtn();
 
-    // console.log(localStorage.getItem("position"));
+    // Clear form inputs
+    $(".form-control").val("");
   }
 }
 
@@ -111,38 +113,16 @@ $(".form-control").on("keydown", function (event) {
   if (event.key === "Enter") {
     event.preventDefault();
     submitForm();
-    storedInput();
     displayOnPage();
-    console.log(
-      "Position: " +
-        storedPosition +
-        ", Company: " +
-        storedCompany +
-        ", Location: " +
-        storedLocation +
-        ", Posting: " +
-        storedPosting
-    );
-    
+    console.log(userInputArray);
   }
 });
 
 // Event handler for submit button
 $("#submit-button").on("click", function () {
   submitForm();
-  storedInput();
   displayOnPage();
-  console.log(
-    "Position: " +
-      storedPosition +
-      ", Company: " +
-      storedCompany +
-      ", Location: " +
-      storedLocation +
-      ", Posting: " +
-      storedPosting
-  );
-  
+  console.log(userInputArray);
 });
 
 // Event listener for the clear button
@@ -160,34 +140,23 @@ function closeBtn() {
   });
 }
 
-console.log(storedPosition);
-
-function storedInput() {
-  // storedPosition.push(positionValue);
-  // storedCompany.push(companyValue);
-  // storedLocation.push(locationValue);
-  // storedPosting.push(postingValue);
-
-  storedPosition.push(localStorage.getItem("position"));
-  storedCompany.push(localStorage.getItem("company"));
-  storedLocation.push(localStorage.getItem("location"));
-  storedPosting.push(localStorage.getItem("posting"));
-}
-
+// Function to display the current submitted info on the page
 function displayOnPage() {
+  // Display the most recent user input
+  const lastIndex = userInputArray.length - 1;
+
  
 
-  displayDiv.text();
-  $("#display-section").append(displayDiv);
+  $("#position-title").text("Position: " + userInputArray[lastIndex].position);
+  $("#company-title").text("Company: " + userInputArray[lastIndex].company);
+  $("#location-title").text("Location: " + userInputArray[lastIndex].location);
+  $("#posting-title").text("Posting: " + userInputArray[lastIndex].posting);
 }
 
-
 $(document).ready(function () {
-
-  // Add event listener to the button Start Journey to link index file to home page
-  $("#btn-dashboard").on('click', function () {
-     
-      // Redirect the user to the 'homepage.html' page
-      window.location.pathname = "/job_search_tracker/dashboard.html" 
+  // Add event listener to the button Start Journey to link index file to the home page
+  $("#btn-dashboard").on("click", function () {
+    // Redirect the user to the 'homepage.html' page
+    window.location.pathname = "/dashboard.html";
   });
 });
