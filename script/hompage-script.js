@@ -63,6 +63,15 @@ $(document).ready(function () {
   autoReload();
 });
 
+/*
+//checking for the valid url see line 95
+function isValidUrl(url) {
+  // Regular expression for a simple URL validation
+  const urlPattern = /^(https?:\/\/)?([\w.]+)\.([a-z]{2,})(\/\S*)?$/;
+  return urlPattern.test(url);
+}
+*/
+
 // Function to handle form submission
 function submitForm() {
   var isEmpty = false;
@@ -72,6 +81,8 @@ function submitForm() {
   const companyValue = $("#company-name").val();
   const locationValue = $("#job-location").val();
   const postingValue = $("#job-posting").val();
+  const jobStageValue = $("#job-stage").val();
+  const jobTypeValue = $("#job-type").val();
 
   // Checking if any of the form fields are empty
   $(".form-control").each(function () {
@@ -81,7 +92,8 @@ function submitForm() {
     }
   });
 
-  if (isEmpty) {
+  // if (isEmpty || jobStageValue === "default" || jobTypeValue === "default" || !isValidUrl(positionValue)) {
+  if (isEmpty || jobStageValue === "default" || jobTypeValue === "default") {
     $("#myModal").modal("show");
     closeBtn();
   } else {
@@ -91,6 +103,8 @@ function submitForm() {
       company: companyValue,
       location: locationValue,
       posting: postingValue,
+      jobStage: jobStageValue,
+      jobType: jobTypeValue,
     };
 
     // Add the user input object to the array
@@ -105,13 +119,17 @@ function submitForm() {
 
     // Clear form inputs
     $(".form-control").val("");
+
+    // Reset the selection option to default values
+    $("#job-stage").prop("selectedIndex", 0);
+    $("#job-type").prop("selectedIndex", 0);
   }
 }
 
 // Event handler for key press
 $(".form-control").on("keydown", function (event) {
   if (event.key === "Enter") {
-    event.preventDefault();
+    // event.preventDefault();
     submitForm();
     displayOnPage();
     console.log(userInputArray);
@@ -122,6 +140,7 @@ $(".form-control").on("keydown", function (event) {
 $("#submit-button").on("click", function () {
   submitForm();
   displayOnPage();
+
   console.log(userInputArray);
 });
 
@@ -129,6 +148,9 @@ $("#submit-button").on("click", function () {
 $("#clear-button").on("click", function () {
   // Clear all the input fields
   $(".form-control").val("");
+  // Reset the selection option to default values
+  $("#job-stage").prop("selectedIndex", 0);
+  $("#job-type").prop("selectedIndex", 0);
 });
 
 // Function for closeBtn
@@ -145,12 +167,55 @@ function displayOnPage() {
   // Display the most recent user input
   const lastIndex = userInputArray.length - 1;
 
- 
+  // Mapping of icons to form input fields
+  const iconMap = {
+    position: '<i class="fa-solid fa-clipboard-user" id="position-icon"></i>',
+    company: '<i class="fa-regular fa-building"></i>',
+    location: '<i class="fa-solid fa-map-location-dot"></i>',
+    // posting: '<i class="fa-solid fa-signs-post"></i>',
+    jobStage: '<i class="fa-solid fa-stairs"></i>',
+    jobType: '<i class="fa-solid fa-briefcase"></i>',
+  };
 
-  $("#position-title").text("Position: " + userInputArray[lastIndex].position);
-  $("#company-title").text("Company: " + userInputArray[lastIndex].company);
-  $("#location-title").text("Location: " + userInputArray[lastIndex].location);
-  $("#posting-title").text("Posting: " + userInputArray[lastIndex].posting);
+  // Displaying the user input with icons
+
+  // clear the existing content
+  $("#position-title").empty();
+
+  // adding the new content
+  $("#position-title").append(
+    `${iconMap.position} Position: ${userInputArray[lastIndex].position}`
+  );
+  $("#company-title").empty();
+  $("#company-title").append(
+    `${iconMap.company} Company: ${userInputArray[lastIndex].company}`
+  );
+
+  $("#location-title").empty();
+  $("#location-title").append(
+    `${iconMap.location} Location: ${userInputArray[lastIndex].location}`
+  );
+  // $("#posting-title").append(
+  //   `${iconMap.posting} Posting: ${userInputArray[lastIndex].posting}`
+  // );
+
+  $("#job-stage-title").empty();
+  $("#job-stage-title").append(
+    `${iconMap.jobStage} Job Stage: ${userInputArray[lastIndex].jobStage}`
+  );
+  $("#job-type-title").empty();
+  $("#job-type-title").append(
+    `${iconMap.jobType} Job Type: ${userInputArray[lastIndex].jobType}`
+  );
+  $("#job-posting-btn").attr("href", userInputArray[lastIndex].posting);
+  // the below code will later
+
+  // $("#position-title").text("Position: " + userInputArray[lastIndex].position);
+  // $("#company-title").text("Company: " + userInputArray[lastIndex].company);
+  // $("#location-title").text("Location: " + userInputArray[lastIndex].location);
+  // $("#posting-title").text("Posting: " + userInputArray[lastIndex].posting);
+  // $("#job-stage-title").text("JobStage: " + userInputArray[lastIndex].jobStage);
+  // $("#job-type-title").text("JobType: " + userInputArray[lastIndex].jobType);
 }
 
 $(document).ready(function () {

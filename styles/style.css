@@ -29,6 +29,11 @@ body {
  
 }
 
+#job-stage, #job-type {
+  display: inline;
+  width: 50%;
+}
+
 
 #submit-button, #clear-button{
   margin: 10px;
