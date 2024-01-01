@@ -1,7 +1,8 @@
 $(document).ready(function() {
 
     let map;
-    let marker
+    let markers = []; // Array to store markers
+    let citiesArray = [];
 
     initMap();
     
@@ -21,7 +22,78 @@ $(document).ready(function() {
             // Set a title for the marker, displayed when the user hovers over it
             title: 'My location'
             });
+
+            markers.push(marker);
           }
+    
+    // Select the "Search" button
+    let searchBtn = $('#map-btn');
+    let addAllMarkers;
+    // Attach an event listener to the "Search" button
+    searchBtn.on('click', function (e) {
+        // Prevent the default form submission behavior
+        e.preventDefault();
+        // Retrieve the location value from local storage
+        // let cityInput = $('#cityInput').val(); 
+        let cityInput = localStorage.getItem('userInputArray');
+
+        if (cityInput) {
+            // Add the city to the array
+            citiesArray = JSON.parse(cityInput);
+            // citiesArray.push(cityInput);
+            // Access the location property for each object in the array
+            citiesArray.forEach((userInputArray) => {
+                // Assume you want to log the location for each object
+                console.log(userInputArray.location);
+                addAllMarkers = userInputArray.location;
+            });
+            // Add a marker for the entered city
+            // addMarkerForCity(cityInput);
+            addMarkerForCity(addAllMarkers);
+            // Store the updated city list in local storage
+            storeCityList();
+
+        }
+    });
+
+    // Function to store the city list in local storage
+    function storeCityList() {
+        localStorage.setItem('city-names', JSON.stringify(citiesArray));
+    }
+
+    function addMarkerForCity(city) {
+        let geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ 'address': city }, function (results, status) {
+            if (status === 'OK') {
+                // Clone the template marker to create a new marker for this city
+                let newMarker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location,
+                    title: city
+                });
+                markers.push(newMarker); // Add the new marker to the array
+                map.setCenter(results[0].geometry.location);
+                map.setZoom(8);
+            } else {
+                alert('Geocode was not successful for ' + city + ': ' + status);
+            }
+        });
+    }
+
+    // Function to remove all markers from the map
+    // function clearMarkers() {
+    //     markers.forEach(function (marker) {
+    //         marker.setMap(null);
+    //     });
+    //     markers = []; // Clear the markers array
+    // }
+
+    // $('#btn-displayAllMarkers').on('click', function () {
+    //     clearMarkers(); // Clear existing markers before displaying all
+    //     for (let j = 0; j < citiesArray.length; j++) {
+    //         addMarkerForCity(citiesArray[j]);
+    //     }
+    // });
     
     // Function to create a card based on user input
     function createCard(userInput) {
@@ -65,6 +137,11 @@ $(document).ready(function() {
         const cardStage = document.createElement('p');
         cardStage.className = 'card-text';
         cardStage.innerHTML = `<i class="fa-solid fa-clipboard-question"></i> ${userInput.jobStage}`;
+
+        // Add data attributes for job type and job stage
+        cardContainer.dataset.jobType = userInput.jobType;
+        cardContainer.dataset.jobStage = userInput.jobStage;
+
 
         const seeJobButton = document.createElement('a');
         seeJobButton.href = userInput.posting;
@@ -116,6 +193,30 @@ $(document).ready(function() {
             createCard(userInputArray[i]);
         }
     }
+
+    // Event listener for job type filter button
+    $("#jobTypeFilterBtn").on("click", function() {
+        filterCards("jobType", $(this).val().trim());
+    });
+
+    // Event listener for job stage filter button
+    $("#jobStageFilterBtn").on("click", function() {
+        filterCards("jobStage", $(this).val().trim());
+    });
+
+    // Filter cards based on the specified data attribute and value
+    function filterCards(attribute, selectedValue) {
+        $(".cardContainer").each(function() {
+            const cardValue = $(this).data(attribute);
+            if (selectedValue === "All" || cardValue === selectedValue) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    }
+
+    
    
     // function deleteCard() {
     //     // let deleteBtn = $('#deleteBtn');
