@@ -23,6 +23,11 @@ $(document).ready(function() {
         // Prevent the default form submission behavior
         e.preventDefault();
 
+        // Scroll to the map section
+        $('html, body').animate({
+            scrollTop: $('#map-section').offset().top
+        }, 1000);
+
         clearMarkers(); // Clear existing markers before displaying all
 
         // Retrieve the location value from local storage
@@ -170,12 +175,13 @@ $(document).ready(function() {
             cardContainer.remove();
 
             // Retrieve the current data from local storage
-            const storedCardData = localStorage.getItem('userInputArray');
-            if (storedCardData) {
+            storedData = localStorage.getItem('userInputArray');
+            if (storedData) {
                 // Parse the stored data into an array
-                userInputArray = JSON.parse(storedCardData);
+                userInputArray = JSON.parse(storedData);
                 // Identify the index of the card's data in the array
-                const indexToRemove = $('.cardContainer').index(cardContainer);
+                const indexToRemove = cardContainer.parent().children('.cardContainer').index(cardContainer);
+                console.log(indexToRemove);
                 // Remove the corresponding data from the array
                 userInputArray.splice(indexToRemove, 1);
                 // Update local storage with the modified array
@@ -186,9 +192,10 @@ $(document).ready(function() {
     deleteCard();
 
     // Retrieve data from local storage and create cards
-    const storedData = localStorage.getItem('userInputArray');
+    let storedData = localStorage.getItem('userInputArray');
+    let userInputArray;
     if (storedData) {
-        const userInputArray = JSON.parse(storedData);
+        userInputArray = JSON.parse(storedData);
 
         // Iterate through userInputArray in reverse order and create cards
         for (let i = userInputArray.length - 1; i >= 0; i--) {
@@ -239,32 +246,7 @@ $(document).ready(function() {
         });
     }
 
-    
-   
-    // function deleteCard() {
-    //     // let deleteBtn = $('#deleteBtn');
-    //     $(document).on('click', '#deleteBtn', function (e) {
-    //         e.preventDefault();
-    //         // Find the closest card container from the clicked delete button
-    //         const cardContainer = $(this).closest('.cardContainer');
-    //         // Remove the card container from the DOM
-    //         cardContainer.remove();
-    //     });
-    // }
-    // deleteCard()
-
-
-    
-    /* // When the page loads, display all cards that user created (get from localStorage)
-    // Check if something exists in localStorage
-    // Create a function to display job cards
-    function displayJobCards() {
-        // Retrieve jobCards array from localStorage and parse it
-        let jobCardsFromLocalStorage = JSON.parse(localStorage.getItem('#job-cards'));
-        // Log the parsed jobCards array to the console
-        console.log(jobCardsFromLocalStorage);
-    } */
-    
+ 
 });
     
     
