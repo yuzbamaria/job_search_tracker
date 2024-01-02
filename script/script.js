@@ -6,6 +6,6 @@ console.log(startBtn);
     startBtn.on('click', function (e) {
         e.preventDefault();
         // Redirect the user to the 'homepage.html' page
-        window.location.pathname = '../homepage.html' 
+        window.location.pathname = '/homepage.html' 
     });
 });
