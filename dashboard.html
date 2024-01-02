@@ -24,6 +24,8 @@
         </h3>
     </header>
 
+    <button>hello</button>
+
     <section class="dashboard-section">
         <div class="container-fluid mt-5 mb-5 ">
             <div class="row justify-content-center">
@@ -35,30 +37,6 @@
                         <div class="card-body text-center">
                             <h4 class="card-title m-5">FILTER MY JOB APPLICATION CARDS</h4>
     
-                            <!-- <div class="btn-group p-2">
-                                <button class="btn btn-success shadow dropdown-toggle" id="jobStageFilterBtn" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Job stage
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Applied</a></li>
-                                    <li><a class="dropdown-item" href="#">Interview</a></li>
-                                    <li><a class="dropdown-item" href="#">Rejected</a></li>
-                                </ul>
-                            </div> -->
-<!--     
-                            <div class="btn-group p-2">
-                                <button class="btn btn-success shadow dropdown-toggle" id="jobTypeFilterBtn" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Job type
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Remote</a></li>
-                                    <li><a class="dropdown-item" href="#">Hybrid</a></li>
-                                    <li><a class="dropdown-item" href="#">Office</a></li>
-                                </ul>
-                            </div> -->
-    
                             <div class="btn-group mb-3">
                                 <button class="btn btn-success shadow" type="button" id="map-btn">
                                     Show companies on map
@@ -68,20 +46,20 @@
                             <div class="container">
                                 <select class="form-select mb-3" id="jobTypeFilterBtn" aria-label="Example select with button addon">
                                     <option value="default" selected>Select job type</option>
+                                    <option value="Remote">Remote</option>
+                                    <option value="Hybrid">Hybrid</option>
+                                    <option value="Office">Office</option>
+                                </select>
+                            </div>
+                            <div class="container">
+                                <select class="form-select mb-3" id="jobStageFilterBtn" aria-label="Example select with button addon">
+                                    <option value="default" selected>Select job stage</option>
                                     <option value="Applied">Applied</option>
                                     <option value="Interview">Interview</option>
                                     <option value="Rejected">Rejected</option>
                                 </select>
                             </div>
                       
-                            <div class="container">
-                                <select class="form-select mb-3" id="jobStageFilterBtn" aria-label="Example select with button addon">
-                                    <option value="default" selected>Select job stage</option>
-                                    <option value="Remote">Remote</option>
-                                    <option value="Hybrid">Hybrid</option>
-                                    <option value="Office">Office</option>
-                                </select>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -90,76 +68,6 @@
                 <div class="row justify-content-center" id="cardsCreation">
                     <h4 class="h4 text-center headline highlight">JOBS I APPLIED</h4> 
                 </div>
-
-    
-                <!--  Job positions Cards -->
-                <!-- <div class="row justify-content-center">
-                    <h4 class="h4 text-center headline highlight">JOBS I APPLIED</h4> -->
-                    <!--  Job Position Card 1 -->
-                    <!-- <div class="cardContainer col-lg-4 col-md-6 col-sm-9 p-3">
-                        <div class="card align-items-center custom-card-border shadow">
-                            <div class="card-body">
-                                <div class="text-center mt-3">
-                                    <h5 class="card-title">Position</h5>
-                                    <h6 class="card-text mb-4">Company name</h6>
-                                </div>
-                                <div class="text-left mb-4">
-                                    <p class="card-text">
-                                        <i class="fa-solid fa-location-arrow"></i>
-                                        Job location
-                                    </p>
-                                    <p class="card-text">
-                                        <i class="fa-solid fa-house-laptop"></i>
-                                        Job type
-                                    </p>
-                                    <p class="card-text">
-                                        <i class="fa-solid fa-clipboard-question"></i>
-                                        Job stage
-                                    </p>
-                                </div>
-                                <a href="#" class="btn btn-warning shadow"> See job posting</a>
-                                <div class="btn-group p-2">
-                                    <button class="btn btn-secondary shadow" type="button">
-                                        Delete card
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                    <!-- End  Job Position card 1 -->
-    
-                    <!--  Job Position Card 1 -->
-                    <!-- <div class="cardContainer col-lg-4 col-md-6 col-sm-9 p-3">
-                        <div class="card align-items-center custom-card-border shadow">
-                            <div class="card-body">
-                                <div class="text-center mt-3">
-                                    <h5 class="card-title">Position</h5>
-                                    <h6 class="card-text mb-4">Company name</h6>
-                                </div>
-                                <div class="text-left mb-4">
-                                    <p class="card-text">
-                                        <i class="fa-solid fa-location-arrow"></i>
-                                        Job location
-                                    </p>
-                                    <p class="card-text">
-                                        <i class="fa-solid fa-house-laptop"></i>
-                                        Job type
-                                    </p>
-                                    <p class="card-text">
-                                        <i class="fa-solid fa-clipboard-question"></i>
-                                        Job stage
-                                    </p>
-                                </div>
-                                <a href="#" class="btn btn-warning shadow"> See job posting</a>
-                                <div class="btn-group p-2">
-                                    <button class="btn btn-secondary shadow" type="button">
-                                        Delete card
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                    <!-- End  Job Position card 1 -->
     
                     <!--  Job Position Card 1 -->
                     <!-- <div class="cardContainer col-lg-4 col-md-6 col-sm-9 p-3">
@@ -193,14 +101,8 @@
                         </div>
                     </div> -->
                     <!-- End  Job Position card 1 -->   
-                               
-                </div>
             </div>
         </div> 
-    </section>
-
-    <section class="test">
-       
     </section>
     
     <section class="map-section" id="map-section">

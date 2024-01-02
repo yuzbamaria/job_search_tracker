@@ -63,14 +63,16 @@ $(document).ready(function () {
   autoReload();
 });
 
-/*
+
 //checking for the valid url see line 95
 function isValidUrl(url) {
   // Regular expression for a simple URL validation
-  const urlPattern = /^(https?:\/\/)?([\w.]+)\.([a-z]{2,})(\/\S*)?$/;
+  const urlPattern = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+  
+
   return urlPattern.test(url);
 }
-*/
+
 
 // Function to handle form submission
 function submitForm() {
@@ -93,7 +95,7 @@ function submitForm() {
   });
 
   // if (isEmpty || jobStageValue === "default" || jobTypeValue === "default" || !isValidUrl(positionValue)) {
-  if (isEmpty || jobStageValue === "default" || jobTypeValue === "default") {
+  if (isEmpty || jobStageValue === "default" || jobTypeValue === "default" || !isValidUrl(postingValue)) {
     $("#myModal").modal("show");
     closeBtn();
   } else {
@@ -164,58 +166,59 @@ function closeBtn() {
 
 // Function to display the current submitted info on the page
 function displayOnPage() {
-  // Display the most recent user input
-  const lastIndex = userInputArray.length - 1;
+  if (userInputArray.length > 0) {
+    // Display the most recent user input
+    const lastIndex = userInputArray.length - 1;
 
-  // Mapping of icons to form input fields
-  const iconMap = {
-    position: '<i class="fa-solid fa-clipboard-user" id="position-icon"></i>',
-    company: '<i class="fa-regular fa-building"></i>',
-    location: '<i class="fa-solid fa-map-location-dot"></i>',
-    // posting: '<i class="fa-solid fa-signs-post"></i>',
-    jobStage: '<i class="fa-solid fa-stairs"></i>',
-    jobType: '<i class="fa-solid fa-briefcase"></i>',
-  };
+    // Mapping of icons to form input fields
+    const iconMap = {
+      position: '<i class="fa-solid fa-clipboard-user" id="position-icon"></i>',
+      company: '<i class="fa-regular fa-building"></i>',
+      location: '<i class="fa-solid fa-map-location-dot"></i>',
+      // posting: '<i class="fa-solid fa-signs-post"></i>',
+      jobStage: '<i class="fa-solid fa-stairs"></i>',
+      jobType: '<i class="fa-solid fa-briefcase"></i>',
+    };
 
-  // Displaying the user input with icons
+    // Displaying the user input with icons
 
-  // clear the existing content
-  $("#position-title").empty();
+    // clear the existing content
+    $("#position-title").empty();
 
-  // adding the new content
-  $("#position-title").append(
-    `${iconMap.position} Position: ${userInputArray[lastIndex].position}`
-  );
-  // for readiblilty the above code can be writtten as below without using backticks (`). (`) backticks sign are use to create template literals, which provide a convenient way to concatenate strings and variables in a readable and flexible manner.
+    // adding the new content
+    $("#position-title").append(
+      `${iconMap.position} Position: ${userInputArray[lastIndex].position}`
+    );
+    // for readiblilty the above code can be writtten as below without using backticks (`). (`) backticks sign are use to create template literals, which provide a convenient way to concatenate strings and variables in a readable and flexible manner.
 
-  // $("#position-title").append(iconMap.position + "Position: " + userInputArray[lastIndex].position);
+    // $("#position-title").append(iconMap.position + "Position: " + userInputArray[lastIndex].position);
 
-  $("#company-title").empty();
-  $("#company-title").append(
-    `${iconMap.company} Company Name: ${userInputArray[lastIndex].company}`
-  );
+    $("#company-title").empty();
+    $("#company-title").append(
+      `${iconMap.company} Company Name: ${userInputArray[lastIndex].company}`
+    );
 
-  $("#location-title").empty();
-  $("#location-title").append(
-    `${iconMap.location} Job Location: ${userInputArray[lastIndex].location}`
-  );
-  // $("#posting-title").append(
-  //   `${iconMap.posting} Posting: ${userInputArray[lastIndex].posting}`
-  // );
+    $("#location-title").empty();
+    $("#location-title").append(
+      `${iconMap.location} Job Location: ${userInputArray[lastIndex].location}`
+    );
+    // $("#posting-title").append(
+    //   `${iconMap.posting} Posting: ${userInputArray[lastIndex].posting}`
+    // );
 
-  $("#job-stage-title").empty();
-  $("#job-stage-title").append(
-    `${iconMap.jobStage} Job Stage: ${userInputArray[lastIndex].jobStage}`
-  );
-  $("#job-type-title").empty();
-  $("#job-type-title").append(
-    `${iconMap.jobType} Job Type: ${userInputArray[lastIndex].jobType}`
-  );
-  $("#job-posting-btn").attr("href", userInputArray[lastIndex].posting);
-  $("#job-posting-btn").attr("target", "_blank");
+    $("#job-stage-title").empty();
+    $("#job-stage-title").append(
+      `${iconMap.jobStage} Job Stage: ${userInputArray[lastIndex].jobStage}`
+    );
+    $("#job-type-title").empty();
+    $("#job-type-title").append(
+      `${iconMap.jobType} Job Type: ${userInputArray[lastIndex].jobType}`
+    );
+    $("#job-posting-btn").attr("href", userInputArray[lastIndex].posting);
+    $("#job-posting-btn").attr("target", "_blank");
 
-  // reset the card
-
+    // reset the card
+  }
   $("#reset-card-btn").on("click", function () {
     $("#position-title").empty();
     $("#position-title").append(`${iconMap.position} Position:`);
