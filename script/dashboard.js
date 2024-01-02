@@ -80,13 +80,14 @@ $(document).ready(function() {
     }
  
     // Function to create a card based on user input
-    function createCard(userInput) {
+    function createCard(userInput, index) {
         // Get the card section
         const cardSection = document.getElementById('cardsCreation');
 
         // Create card container for each card
         const cardContainer = document.createElement('div');
         cardContainer.className = 'cardContainer col-lg-4 col-md-6 col-sm-9 p-3';
+        cardContainer.dataset.cardIndex = index;
 
         // Create card elements
         const card = document.createElement('div');
@@ -166,31 +167,6 @@ $(document).ready(function() {
         cardSection.appendChild(cardContainer);
     }
 
-    function deleteCard() {
-        // Attach an event listener to a common parent element of the delete buttons
-        $('#cardsCreation').on('click', '.deleteBtn', function () {
-            // Identify the card to be deleted
-            const cardContainer = $(this).closest('.cardContainer');
-            // Remove the card from the DOM
-            cardContainer.remove();
-
-            // Retrieve the current data from local storage
-            storedData = localStorage.getItem('userInputArray');
-            if (storedData) {
-                // Parse the stored data into an array
-                userInputArray = JSON.parse(storedData);
-                // Identify the index of the card's data in the array
-                const indexToRemove = cardContainer.parent().children('.cardContainer').index(cardContainer);
-                console.log(indexToRemove);
-                // Remove the corresponding data from the array
-                userInputArray.splice(indexToRemove, 1);
-                // Update local storage with the modified array
-                localStorage.setItem('userInputArray', JSON.stringify(userInputArray));
-            }
-        });
-    }
-    deleteCard();
-
     // Retrieve data from local storage and create cards
     let storedData = localStorage.getItem('userInputArray');
     let userInputArray;
@@ -199,9 +175,36 @@ $(document).ready(function() {
 
         // Iterate through userInputArray in reverse order and create cards
         for (let i = userInputArray.length - 1; i >= 0; i--) {
-            createCard(userInputArray[i]);
+            createCard(userInputArray[i], i);
         }
     }
+
+    function deleteCard() {
+        // Attach an event listener to a common parent element of the delete buttons
+        $('#cardsCreation').on('click', '.deleteBtn', function () {
+            // Identify the card to be deleted
+            const cardContainer = $(this).closest('.cardContainer');
+            // Retrieve the index from the data attribute
+            const indexToRemove = cardContainer.data('cardIndex');
+            console.log(indexToRemove);
+            // Remove the card from the DOM
+            cardContainer.remove();
+
+            // Retrieve the current data from local storage
+            storedData = localStorage.getItem('userInputArray');
+            if (storedData) {
+                // Parse the stored data into an array
+                userInputArray = JSON.parse(storedData);
+
+                // Remove the corresponding data from the array
+                userInputArray.splice(indexToRemove, 1);
+
+                // Update local storage with the modified array
+                localStorage.setItem('userInputArray', JSON.stringify(userInputArray));
+            }
+        });
+    }
+    deleteCard();
 
     // Event listener for job type filter button
     // $("#jobTypeFilterBtn").on("click", function() {
