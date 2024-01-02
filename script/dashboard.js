@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+
+    // DISPLAY MARKERS ON THE MAP
+
     let map;
     let markers = []; // Array to store markers
     let citiesArray = [];
@@ -47,8 +50,8 @@ $(document).ready(function() {
         });
     }
 
-    // Call initMap after the DOM is fully loaded
-    google.maps.event.addDomListener(window, 'load', initMap);
+    // // Call initMap after the DOM is fully loaded
+    // google.maps.event.addDomListener(window, 'load', initMap);
 
     // Select the "map" button
     let showCompaniesOnMap = $('#map-btn');
@@ -84,7 +87,9 @@ $(document).ready(function() {
     $(function() {
         initMap();
     });
- 
+    
+    // CREATES CARDS
+
     // Function to create a card based on user input
     function createCard(userInput, index) {
         // Get the card section
@@ -132,7 +137,6 @@ $(document).ready(function() {
         // Add data attributes for job type and job stage
         cardContainer.dataset.jobType = userInput.jobType;
         cardContainer.dataset.jobStage = userInput.jobStage;
-
 
         const seeJobButton = document.createElement('a');
         seeJobButton.href = userInput.posting;
@@ -185,6 +189,8 @@ $(document).ready(function() {
         }
     }
 
+    // DELETE CARD BUTTON 
+
     function deleteCard() {
         // Attach an event listener to a common parent element of the delete buttons
         $('#cardsCreation').on('click', '.deleteBtn', function () {
@@ -212,50 +218,67 @@ $(document).ready(function() {
     }
     deleteCard();
 
-    // Event listener for job type filter button
-    // $("#jobTypeFilterBtn").on("click", function() {
-    //     filterCards("jobType", $(this).val().trim());
-    // });
+    // FILTERS 
 
-     // Event listener for job type filter button
+    // Event listener for job type filter button
      $("#jobTypeFilterBtn").on("change", function() {
         // Get the selected job type
         const selectedJobType = $(this).val();
-
         // Filter cards based on the selected job type
         filterCards("jobType", selectedJobType);
     });
 
     // Event listener for job stage filter button
-    // $("#jobStageFilterBtn").on("click", function() {
-    //     filterCards("jobStage", $(this).val().trim());
-    // });
+    $("#jobStageFilterBtn").on("change", function() {
+        // Get the selected job type
+        const selectedJobStage = $(this).val();
+        // Filter cards based on the selected job type
+        filterCards("jobStage", selectedJobStage);
+    });
 
-    // Filter cards based on the specified data attribute and value
-    function filterCards(attribute, selectedValue) {
-        console.log("Filtering cards:", attribute, selectedValue);
+    // Function to filter cards based on the specified data attribute and value
+    function filterCards(jobType, jobStage) {
+        console.log("Filtering cards - Job Type:", jobType, "Job Stage:", jobStage);
+        
+        // Iterate over each cardContainer element using jQuery
         $(".cardContainer").each(function() {
-            const cardValue = $(this).data(attribute);
-            console.log("Card value:", cardValue);
-
-            if (cardValue !== undefined) {
-                console.log("Card value is defined");
+            // Retrieve the jobType and jobStage values from the current cardContainer
+            const cardJobType = $(this).data("jobType");
+            const cardJobStage = $(this).data("jobStage");
     
-                if (selectedValue === "default" || cardValue === selectedValue) {
-                    console.log("Showing card");
-                    $(this).show();
-                } else {
-                    console.log("Hiding card");
-                    $(this).hide();
-                }
+            console.log("Card Job Type:", cardJobType, "Card Job Stage:", cardJobStage);
+    
+            // check if the jobType is either "default" or matches the cardJobType
+            const isJobTypeMatch = jobType === "default" || cardJobType === jobType;
+            // Check if the jobStage is either "default" or matches the cardJobStage
+            const isJobStageMatch = jobStage === "default" || cardJobStage === jobStage;
+    
+            // Check if either jobType or jobStage is selected, and if the matches are found
+            if ((jobType && isJobTypeMatch) || (jobStage && isJobStageMatch)) {
+                console.log("Showing card");
+                $(this).show();
             } else {
-                console.log("Card value is undefined");
-                // Handle the case when cardValue is undefined (optional)
+                console.log("Hiding card");
+                $(this).hide();
             }
         });
     }
+    
+    // Event listener for job type filter dropdown
+    // $("#jobTypeFilterBtn").on("change", function() {
+    //     const selectedJobType = $(this).val();
+    //     const selectedJobStage = $("#jobStageFilterBtn").val(); // Get the selected job stage
+    
+    //     filterCards(selectedJobType, selectedJobStage);
+    // });
 
- 
+    // // Event listener for job stage filter dropdown
+    // $("#jobStageFilterBtn").on("change", function () {
+    //     const selectedJobStage = $(this).val();
+    //     const selectedJobType = $("#jobTypeFilterBtn").val(); // Get the selected job type
+
+    //     filterCards(selectedJobType, selectedJobStage);
+    // });
 });
     
     
