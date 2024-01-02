@@ -27,6 +27,8 @@ $(document).ready(function() {
     let markers = []; // Array to store markers
     let citiesArray = [];
 
+    let newFile;
+
 
     // Function to store the city list in local storage
     function storeCityList() {
@@ -34,6 +36,8 @@ $(document).ready(function() {
         // If not, you can omit this function
         localStorage.setItem('city-names', JSON.stringify(citiesArray));
     }
+
+
 
     function addMarkerForCity(city) {
         let geocoder = new google.maps.Geocoder();
