@@ -1,6 +1,7 @@
 
 $(document).ready(function () {
     let startBtn = $('#btn-start');
+console.log(startBtn);
     // Add event listener to the button Start Journey to link index file to home page
     startBtn.on('click', function (e) {
         e.preventDefault();
@@ -8,4 +9,3 @@ $(document).ready(function () {
         window.location.pathname = '../homepage.html' 
     });
 });
-
