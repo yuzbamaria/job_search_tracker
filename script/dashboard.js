@@ -4,7 +4,39 @@ $(document).ready(function() {
     let markers = []; // Array to store markers
     let citiesArray = [];
 
-    initMap();
+
+    // Function to store the city list in local storage
+    function storeCityList() {
+        // Assuming you want to store the updated city list after adding markers
+        // If not, you can omit this function
+        localStorage.setItem('city-names', JSON.stringify(citiesArray));
+    }
+
+    function addMarkerForCity(city) {
+        let geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ address: city }, function (results, status) {
+            if (status === 'OK') {
+                // Create a new marker for this city
+                new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location,
+                    title: city,
+                });
+                map.setCenter(results[0].geometry.location);
+                map.setZoom(6);
+            } else {
+                alert('Geocode was not successful for ' + city + ': ' + status);
+            }
+        });
+    }
+
+    // Function to remove all markers from the map
+    function clearMarkers() {
+        // Remove all markers from the map
+        markers.forEach(function (marker) {
+            marker.setMap(null);
+        });
+    }
 
     // Create a new Google Map and associate it with the HTML element with the ID 'map'
     function initMap() {
@@ -14,6 +46,9 @@ $(document).ready(function() {
             zoom: 6,
         });
     }
+
+    // Call initMap after the DOM is fully loaded
+    google.maps.event.addDomListener(window, 'load', initMap);
 
     // Select the "map" button
     let showCompaniesOnMap = $('#map-btn');
@@ -46,38 +81,9 @@ $(document).ready(function() {
         }
     });
 
-    // Function to store the city list in local storage
-    function storeCityList() {
-        // Assuming you want to store the updated city list after adding markers
-        // If not, you can omit this function
-        localStorage.setItem('city-names', JSON.stringify(citiesArray));
-    }
-
-    function addMarkerForCity(city) {
-        let geocoder = new google.maps.Geocoder();
-        geocoder.geocode({ address: city }, function (results, status) {
-            if (status === 'OK') {
-                // Create a new marker for this city
-                new google.maps.Marker({
-                    map: map,
-                    position: results[0].geometry.location,
-                    title: city,
-                });
-                map.setCenter(results[0].geometry.location);
-                map.setZoom(8);
-            } else {
-                alert('Geocode was not successful for ' + city + ': ' + status);
-            }
-        });
-    }
-
-    // Function to remove all markers from the map
-    function clearMarkers() {
-        // Remove all markers from the map
-        markers.forEach(function (marker) {
-            marker.setMap(null);
-        });
-    }
+    $(function() {
+        initMap();
+    });
  
     // Function to create a card based on user input
     function createCard(userInput, index) {
