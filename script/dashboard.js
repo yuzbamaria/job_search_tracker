@@ -177,17 +177,35 @@ $(document).ready(function() {
         cardSection.appendChild(cardContainer);
     }
 
-    // Retrieve data from local storage and create cards
-    let storedData = localStorage.getItem('userInputArray');
-    let userInputArray;
-    if (storedData) {
-        userInputArray = JSON.parse(storedData);
-
-        // Iterate through userInputArray in reverse order and create cards
-        for (let i = userInputArray.length - 1; i >= 0; i--) {
+    function populateIntialData() { //updated
+        //upddated
+        const cardsCreation = document.getElementById("cardsCreation"); //updated
+        // Retrieve data from local storage and create cards
+        let storedData = localStorage.getItem("userInputArray");
+        let userInputArray;
+        if (storedData) {
+          userInputArray = JSON.parse(storedData);
+          cardsCreation.innerHTML = ""; //updated
+          // Iterate through userInputArray in reverse order and create cards
+          for (let i = userInputArray.length - 1; i >= 0; i--) {
             createCard(userInputArray[i], i);
+          }
         }
-    }
+      }
+      populateIntialData(); // updated
+    
+
+    // // Retrieve data from local storage and create cards
+    // let storedData = localStorage.getItem('userInputArray');
+    // let userInputArray;
+    // if (storedData) {
+    //     userInputArray = JSON.parse(storedData);
+
+    //     // Iterate through userInputArray in reverse order and create cards
+    //     for (let i = userInputArray.length - 1; i >= 0; i--) {
+    //         createCard(userInputArray[i], i);
+    //     }
+    // }
 
     // DELETE CARD BUTTON 
 
@@ -213,6 +231,7 @@ $(document).ready(function() {
 
                 // Update local storage with the modified array
                 localStorage.setItem('userInputArray', JSON.stringify(userInputArray));
+                populateIntialData(); 
             }
         });
     }
