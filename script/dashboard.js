@@ -77,7 +77,7 @@ $(document).ready(function() {
     // Function to create a card based on user input
     function createCard(userInput) {
         // Get the card section
-        const cardSection = document.getElementById('testCardsCreation');
+        const cardSection = document.getElementById('cardsCreation');
 
         // Create card container for each card
         const cardContainer = document.createElement('div');
@@ -129,8 +129,7 @@ $(document).ready(function() {
         seeJobButton.target = "_blank";
 
         const deleteCardButton = document.createElement('button');
-        deleteCardButton.className = 'btn btn-secondary m-2 shadow';
-        deleteCardButton.id = 'deleteBtn';
+        deleteCardButton.className = 'btn btn-secondary m-2 shadow deleteBtn';
         deleteCardButton.type = 'button';
         deleteCardButton.textContent = 'Delete card';
 
@@ -161,6 +160,30 @@ $(document).ready(function() {
         // Append the card to the card container
         cardSection.appendChild(cardContainer);
     }
+
+    function deleteCard() {
+        // Attach an event listener to a common parent element of the delete buttons
+        $('#cardsCreation').on('click', '.deleteBtn', function () {
+            // Identify the card to be deleted
+            const cardContainer = $(this).closest('.cardContainer');
+            // Remove the card from the DOM
+            cardContainer.remove();
+
+            // Retrieve the current data from local storage
+            const storedCardData = localStorage.getItem('userInputArray');
+            if (storedCardData) {
+                // Parse the stored data into an array
+                userInputArray = JSON.parse(storedCardData);
+                // Identify the index of the card's data in the array
+                const indexToRemove = $('.cardContainer').index(cardContainer);
+                // Remove the corresponding data from the array
+                userInputArray.splice(indexToRemove, 1);
+                // Update local storage with the modified array
+                localStorage.setItem('userInputArray', JSON.stringify(userInputArray));
+            }
+        });
+    }
+    deleteCard();
 
     // Retrieve data from local storage and create cards
     const storedData = localStorage.getItem('userInputArray');
