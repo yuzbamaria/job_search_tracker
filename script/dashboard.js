@@ -1,10 +1,49 @@
 $(document).ready(function() {
 
+
+    // DISPLAY MARKERS ON THE MAP
+
     let map;
     let markers = []; // Array to store markers
     let citiesArray = [];
 
-    initMap();
+    let newFile;
+
+
+    // Function to store the city list in local storage
+    function storeCityList() {
+        // Assuming you want to store the updated city list after adding markers
+        // If not, you can omit this function
+        localStorage.setItem('city-names', JSON.stringify(citiesArray));
+    }
+
+
+
+    function addMarkerForCity(city) {
+        let geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ address: city }, function (results, status) {
+            if (status === 'OK') {
+                // Create a new marker for this city
+                new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location,
+                    title: city,
+                });
+                map.setCenter(results[0].geometry.location);
+                map.setZoom(6);
+            } else {
+                alert('Geocode was not successful for ' + city + ': ' + status);
+            }
+        });
+    }
+
+    // Function to remove all markers from the map
+    function clearMarkers() {
+        // Remove all markers from the map
+        markers.forEach(function (marker) {
+            marker.setMap(null);
+        });
+    }
 
     // Create a new Google Map and associate it with the HTML element with the ID 'map'
     function initMap() {
@@ -14,6 +53,9 @@ $(document).ready(function() {
             zoom: 6,
         });
     }
+
+    // // Call initMap after the DOM is fully loaded
+    // google.maps.event.addDomListener(window, 'load', initMap);
 
     // Select the "map" button
     let showCompaniesOnMap = $('#map-btn');
@@ -46,39 +88,12 @@ $(document).ready(function() {
         }
     });
 
-    // Function to store the city list in local storage
-    function storeCityList() {
-        // Assuming you want to store the updated city list after adding markers
-        // If not, you can omit this function
-        localStorage.setItem('city-names', JSON.stringify(citiesArray));
-    }
+    $(function() {
+        initMap();
+    });
+    
+    // CREATES CARDS
 
-    function addMarkerForCity(city) {
-        let geocoder = new google.maps.Geocoder();
-        geocoder.geocode({ address: city }, function (results, status) {
-            if (status === 'OK') {
-                // Create a new marker for this city
-                new google.maps.Marker({
-                    map: map,
-                    position: results[0].geometry.location,
-                    title: city,
-                });
-                map.setCenter(results[0].geometry.location);
-                map.setZoom(8);
-            } else {
-                alert('Geocode was not successful for ' + city + ': ' + status);
-            }
-        });
-    }
-
-    // Function to remove all markers from the map
-    function clearMarkers() {
-        // Remove all markers from the map
-        markers.forEach(function (marker) {
-            marker.setMap(null);
-        });
-    }
- 
     // Function to create a card based on user input
     function createCard(userInput, index) {
         // Get the card section
@@ -127,7 +142,6 @@ $(document).ready(function() {
         cardContainer.dataset.jobType = userInput.jobType;
         cardContainer.dataset.jobStage = userInput.jobStage;
 
-
         const seeJobButton = document.createElement('a');
         seeJobButton.href = userInput.posting;
         seeJobButton.className = 'btn btn-warning shadow';
@@ -167,17 +181,37 @@ $(document).ready(function() {
         cardSection.appendChild(cardContainer);
     }
 
-    // Retrieve data from local storage and create cards
-    let storedData = localStorage.getItem('userInputArray');
-    let userInputArray;
-    if (storedData) {
-        userInputArray = JSON.parse(storedData);
-
-        // Iterate through userInputArray in reverse order and create cards
-        for (let i = userInputArray.length - 1; i >= 0; i--) {
+    function populateIntialData() { //updated
+        //upddated
+        const cardsCreation = document.getElementById("cardsCreation"); //updated
+        // Retrieve data from local storage and create cards
+        let storedData = localStorage.getItem("userInputArray");
+        let userInputArray;
+        if (storedData) {
+          userInputArray = JSON.parse(storedData);
+          cardsCreation.innerHTML = ""; //updated
+          // Iterate through userInputArray in reverse order and create cards
+          for (let i = userInputArray.length - 1; i >= 0; i--) {
             createCard(userInputArray[i], i);
+          }
         }
-    }
+      }
+      populateIntialData(); // updated
+    
+
+    // // Retrieve data from local storage and create cards
+    // let storedData = localStorage.getItem('userInputArray');
+    // let userInputArray;
+    // if (storedData) {
+    //     userInputArray = JSON.parse(storedData);
+
+    //     // Iterate through userInputArray in reverse order and create cards
+    //     for (let i = userInputArray.length - 1; i >= 0; i--) {
+    //         createCard(userInputArray[i], i);
+    //     }
+    // }
+
+    // DELETE CARD BUTTON 
 
     function deleteCard() {
         // Attach an event listener to a common parent element of the delete buttons
@@ -201,55 +235,73 @@ $(document).ready(function() {
 
                 // Update local storage with the modified array
                 localStorage.setItem('userInputArray', JSON.stringify(userInputArray));
+                populateIntialData(); 
             }
         });
     }
     deleteCard();
 
-    // Event listener for job type filter button
-    // $("#jobTypeFilterBtn").on("click", function() {
-    //     filterCards("jobType", $(this).val().trim());
-    // });
+    // FILTERS 
 
-     // Event listener for job type filter button
+    // Event listener for job type filter button
      $("#jobTypeFilterBtn").on("change", function() {
         // Get the selected job type
         const selectedJobType = $(this).val();
-
         // Filter cards based on the selected job type
         filterCards("jobType", selectedJobType);
     });
 
     // Event listener for job stage filter button
-    // $("#jobStageFilterBtn").on("click", function() {
-    //     filterCards("jobStage", $(this).val().trim());
-    // });
+    $("#jobStageFilterBtn").on("change", function() {
+        // Get the selected job type
+        const selectedJobStage = $(this).val();
+        // Filter cards based on the selected job type
+        filterCards("jobStage", selectedJobStage);
+    });
 
-    // Filter cards based on the specified data attribute and value
-    function filterCards(attribute, selectedValue) {
-        console.log("Filtering cards:", attribute, selectedValue);
+    // Function to filter cards based on the specified data attribute and value
+    function filterCards(jobType, jobStage) {
+        console.log("Filtering cards - Job Type:", jobType, "Job Stage:", jobStage);
+        
+        // Iterate over each cardContainer element using jQuery
         $(".cardContainer").each(function() {
-            const cardValue = $(this).data(attribute);
-            console.log("Card value:", cardValue);
-
-            if (cardValue !== undefined) {
-                console.log("Card value is defined");
+            // Retrieve the jobType and jobStage values from the current cardContainer
+            const cardJobType = $(this).data("jobType");
+            const cardJobStage = $(this).data("jobStage");
     
-                if (selectedValue === "default" || cardValue === selectedValue) {
-                    console.log("Showing card");
-                    $(this).show();
-                } else {
-                    console.log("Hiding card");
-                    $(this).hide();
-                }
+            console.log("Card Job Type:", cardJobType, "Card Job Stage:", cardJobStage);
+    
+            // check if the jobType is either "default" or matches the cardJobType
+            const isJobTypeMatch = jobType === "default" || cardJobType === jobType;
+            // Check if the jobStage is either "default" or matches the cardJobStage
+            const isJobStageMatch = jobStage === "default" || cardJobStage === jobStage;
+    
+            // Check if either jobType or jobStage is selected, and if the matches are found
+            if ((jobType && isJobTypeMatch) || (jobStage && isJobStageMatch)) {
+                console.log("Showing card");
+                $(this).show();
             } else {
-                console.log("Card value is undefined");
-                // Handle the case when cardValue is undefined (optional)
+                console.log("Hiding card");
+                $(this).hide();
             }
         });
     }
+    
+    // Event listener for job type filter dropdown
+    // $("#jobTypeFilterBtn").on("change", function() {
+    //     const selectedJobType = $(this).val();
+    //     const selectedJobStage = $("#jobStageFilterBtn").val(); // Get the selected job stage
+    
+    //     filterCards(selectedJobType, selectedJobStage);
+    // });
 
- 
+    // // Event listener for job stage filter dropdown
+    // $("#jobStageFilterBtn").on("change", function () {
+    //     const selectedJobStage = $(this).val();
+    //     const selectedJobType = $("#jobTypeFilterBtn").val(); // Get the selected job type
+
+    //     filterCards(selectedJobType, selectedJobStage);
+    // });
 });
     
     
