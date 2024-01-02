@@ -33,9 +33,9 @@
                     <div class="card align-items-center custom-card-border shadow"
                         style="background-color: rgb(255, 255, 255, 0.1);">
                         <div class="card-body text-center">
-                            <h5 class="card-title">Filter my job applications</h5>
+                            <h4 class="card-title m-5">FILTER MY JOB APPLICATION CARDS</h4>
     
-                            <div class="btn-group p-2">
+                            <!-- <div class="btn-group p-2">
                                 <button class="btn btn-success shadow dropdown-toggle" id="jobStageFilterBtn" type="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Job stage
@@ -45,8 +45,8 @@
                                     <li><a class="dropdown-item" href="#">Interview</a></li>
                                     <li><a class="dropdown-item" href="#">Rejected</a></li>
                                 </ul>
-                            </div>
-    
+                            </div> -->
+<!--     
                             <div class="btn-group p-2">
                                 <button class="btn btn-success shadow dropdown-toggle" id="jobTypeFilterBtn" type="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -57,20 +57,37 @@
                                     <li><a class="dropdown-item" href="#">Hybrid</a></li>
                                     <li><a class="dropdown-item" href="#">Office</a></li>
                                 </ul>
-                            </div>
+                            </div> -->
     
-                            <div class="btn-group p-2">
+                            <div class="btn-group mb-3">
                                 <button class="btn btn-success shadow" type="button" id="map-btn">
                                     Show companies on map
                                 </button>
                             </div>
-    
+
+                            <div class="container">
+                                <select class="form-select mb-3" id="jobTypeFilterBtn" aria-label="Example select with button addon">
+                                    <option value="default" selected>Select job type</option>
+                                    <option value="Applied">Applied</option>
+                                    <option value="Interview">Interview</option>
+                                    <option value="Rejected">Rejected</option>
+                                </select>
+                            </div>
+                      
+                            <div class="container">
+                                <select class="form-select mb-3" id="jobStageFilterBtn" aria-label="Example select with button addon">
+                                    <option value="default" selected>Select job stage</option>
+                                    <option value="Remote">Remote</option>
+                                    <option value="Hybrid">Hybrid</option>
+                                    <option value="Office">Office</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 
-                <div class="row justify-content-center" id="testCardsCreation">
+                <div class="row justify-content-center" id="cardsCreation">
                     <h4 class="h4 text-center headline highlight">JOBS I APPLIED</h4> 
                 </div>
 
