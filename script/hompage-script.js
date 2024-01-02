@@ -30,8 +30,8 @@ function fetchAndDisplayQuote() {
 
       // adding the attributes or class
       headerEL.addClass("card-header");
-      h2El.addClass("blockquote", "mb-3");
-      pEl.addClass("blockquote-footer", "mb-3");
+      h2El.addClass("blockquote mb-3 text-center");
+      pEl.addClass("blockquote-footer mb-3 text-center");
       container.addClass("shadow");
 
       // Adding text
@@ -186,14 +186,18 @@ function displayOnPage() {
   $("#position-title").append(
     `${iconMap.position} Position: ${userInputArray[lastIndex].position}`
   );
+  // for readiblilty the above code can be writtten as below without using backticks (`). (`) backticks sign are use to create template literals, which provide a convenient way to concatenate strings and variables in a readable and flexible manner.
+
+  // $("#position-title").append(iconMap.position + "Position: " + userInputArray[lastIndex].position);
+
   $("#company-title").empty();
   $("#company-title").append(
-    `${iconMap.company} Company: ${userInputArray[lastIndex].company}`
+    `${iconMap.company} Company Name: ${userInputArray[lastIndex].company}`
   );
 
   $("#location-title").empty();
   $("#location-title").append(
-    `${iconMap.location} Location: ${userInputArray[lastIndex].location}`
+    `${iconMap.location} Job Location: ${userInputArray[lastIndex].location}`
   );
   // $("#posting-title").append(
   //   `${iconMap.posting} Posting: ${userInputArray[lastIndex].posting}`
@@ -208,6 +212,29 @@ function displayOnPage() {
     `${iconMap.jobType} Job Type: ${userInputArray[lastIndex].jobType}`
   );
   $("#job-posting-btn").attr("href", userInputArray[lastIndex].posting);
+  $("#job-posting-btn").attr("target", "_blank");
+
+  // reset the card
+
+  $("#reset-card-btn").on("click", function () {
+    $("#position-title").empty();
+    $("#position-title").append(`${iconMap.position} Position:`);
+
+    $("#company-title").empty();
+    $("#company-title").append(`${iconMap.company} Company Name:`);
+
+    $("#location-title").empty();
+    $("#location-title").append(`${iconMap.location} Job Location: `);
+
+    $("#job-stage-title").empty();
+    $("#job-stage-title").append(`${iconMap.jobStage} Job Stage: `);
+
+    $("#job-type-title").empty();
+    $("#job-type-title").append(`${iconMap.jobType} Job Type:`);
+
+    $("#job-posting-btn").attr("href", "");
+  });
+
   // the below code will later
 
   // $("#position-title").text("Position: " + userInputArray[lastIndex].position);
