@@ -27,59 +27,28 @@
     <!-- bootstrap -->
 
     <section class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
+      <div class="container-fluid text-center">
         <i
           class="fa-solid fa-magnifying-glass h3 p-4"
           style="color: #e99607"
         ></i>
-        <a class="navbar-brand" href="">Job Search Tracker</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"
-                >Contact Us</a
-              >
-            </li>
-          </ul>
-        </div>
+        <a class="navbar-brand me-auto" href="">Job Search Tracker</a>
       </div>
     </section>
 
     <!-- nav bar end here  -->
-
+    <!-- Quote section star-->
     <section>
-      <div class="card container-quote">
-        <!-- <div class="card-header">Quote</div>
-        <div class="card-body">
-          <blockquote class="blockquote mb-3">
-            <p>
-              A well-known quote, contained in a blockquote element. 
-            </p>
-            <footer class="blockquote-footer">
-              <cite id="author">author</cite>
-            </footer>
-          </blockquote>
-        </div> -->
-      </div>
+      <div class="card container-quote text-center p-4"></div>
     </section>
-    <section class="container text-center form shadow">
-      <div class="row row-cols-2">
+    <!-- Quote section end-->
+
+    <!-- Input section start -->
+    <section class="container text-center d-flex align-items-center justify-content-center form shadow">
+
+      <div class="row">
         <!-- position input -->
-        <div class="col">
+        <div class="col-md-6 col-lg-6">
           <p>Position</p>
 
           <div>
@@ -98,7 +67,7 @@
         </div>
 
         <!-- company input -->
-        <div class="col">
+        <div class="col-md-6 col-lg-6">
           <p>Company Name</p>
           <div>
             <form class="container text-center">
@@ -116,7 +85,7 @@
         </div>
 
         <!-- location input -->
-        <div class="col">
+        <div class="col-md-6 col-lg-6">
           <p>Job Location</p>
           <div>
             <form class="container text-center">
@@ -134,7 +103,7 @@
         </div>
 
         <!-- posting input -->
-        <div class="col">
+        <div class="col-md-6 col-lg-6">
           <p>Job Posting</p>
 
           <div>
@@ -152,7 +121,10 @@
           </div>
         </div>
 
-        <div class="container">
+        <!-- ask team member -->
+        <!-- <div class="container"> -->
+        <div class="col-md-6 col-lg-6">
+        
           <p>Job Stage</p>
           <select
             class="form-select mb-3"
@@ -167,14 +139,17 @@
           </select>
         </div>
 
-        <div class="container">
+        <!-- ask team member -->
+        
+        <!-- <div class="container"> -->
+          <div class="col-md-6 col-lg-6">
           <p>Job Type</p>
           <select
             class="form-select mb-3"
             id="job-type"
             aria-label="Example select with button addon"
           >
-            <option value="default" selected >Choose...</option>
+            <option value="default" selected>Choose...</option>
 
             <option value="Remote">Remote</option>
             <option value="Hybrid">Hybrid</option>
@@ -184,15 +159,17 @@
 
         <!-- submit button -->
 
-        <div class="col">
+        <!-- <div class="col"> -->
+        <div class="col-md-6 col-lg-6">
           <div class="d-grid gap-2 col-6 mx-auto">
             <button type="submit" class="btn btn-primary" id="submit-button">
               Submit
             </button>
           </div>
         </div>
-        <div class="col">
-          <div class="d-grid gap-2 col-6 mx-auto">
+        <!-- <div class="col"> -->
+        <div class="col-md-6 col-lg-6">
+        <div class="d-grid gap-2 col-6 mx-auto">
             <button type="reset" class="btn btn-primary" id="clear-button">
               Clear
             </button>
@@ -200,6 +177,8 @@
         </div>
       </div>
     </section>
+
+    <!-- Input section end -->
 
     <div class="row justify-content-center">
       <!--  Job Position Card  -->
@@ -236,8 +215,19 @@
               </p>
             </div>
             <br />
-            <a href="#" class="btn btn-warning shadow" id="job-posting-btn"> See job posting</a>
-            
+            <a href="#" class="btn btn-warning shadow" id="job-posting-btn">
+              See job posting</a
+            >
+
+            <div class="btn-group p-2">
+              <button
+                class="btn btn-secondary shadow"
+                type="button"
+                id="reset-card-btn"
+              >
+                Reset card
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -311,6 +301,10 @@
         </div>
       </div>
     </div>
+
+    <footer class="footer text-left py-3 px-4 custom-footer">
+      <p>&copy; 2024 Gp17 Website. All rights reserved.</p>
+    </footer>
 
     <!-- bootstrap -->
     <script
