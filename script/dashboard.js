@@ -4,7 +4,6 @@ $(document).ready(function() {
     let map;
     let markers = []; // Array to store markers
     let citiesArray = [];
-    let newFile;
 
     // Function to store the city list in local storage
     function storeCityList() {
@@ -79,35 +78,50 @@ $(document).ready(function() {
     function createCard(userInput, index) {
         // Get the card section
         const cardSection = document.getElementById('cardsCreation');
+
         // Create card container for each card
         const cardContainer = document.createElement('div');
         cardContainer.className = 'cardContainer col-lg-4 col-md-6 col-sm-9 p-3';
         cardContainer.dataset.cardIndex = index;
+
         // Create card elements
         const card = document.createElement('div');
-        card.className = 'card align-items-center custom-card-border shadow';
+        card.className = 'card align-items-center shadow';
+
         const cardBody = document.createElement('div');
-        cardBody.className = 'card-body';
+        cardBody.className = 'card-body text-center';
+
         const titleContainer = document.createElement('div');
         titleContainer.className = 'text-center mt-3';
+
         // Create and append card content
         const cardTitle = document.createElement('h5');
         cardTitle.className = 'card-title';
         cardTitle.textContent = userInput.position;
+        // cardTitle.innerHTML = `<i class="fa-solid fa-clipboard-user"></i> ${userInput.position}`;
+
         const cardCompany = document.createElement('h6');
         cardCompany.className = 'card-text mb-2';
         cardCompany.textContent = userInput.company;
+
         const paragraphContainer = document.createElement('div');
         paragraphContainer.className = 'text-left mb-4';
+
         const cardLocation = document.createElement('p');
         cardLocation.className = 'card-text';
-        cardLocation.innerHTML = `<i class="fa-solid fa-location-arrow"></i> ${userInput.location}`;
+        cardLocation.innerHTML = ` <i class="fa-solid fa-location-arrow"></i> City: ${userInput.location}`;
+        // `
+        //     
+        // 
+
         const cardType = document.createElement('p');
         cardType.className = 'card-text';
-        cardType.innerHTML = `<i class="fa-solid fa-house-laptop"></i> ${userInput.jobType}`;
+        cardType.innerHTML =  `<i class="fa-solid fa-house-laptop"></i> Job type: ${userInput.jobType}`;
+
         const cardStage = document.createElement('p');
         cardStage.className = 'card-text';
-        cardStage.innerHTML = `<i class="fa-solid fa-clipboard-question"></i> ${userInput.jobStage}`;
+        cardStage.innerHTML = `<i class="fa-solid fa-stairs"></i> Job stage: ${userInput.jobStage}`;
+
         // Add data attributes for job type and job stage
         cardContainer.dataset.jobType = userInput.jobType;
         cardContainer.dataset.jobStage = userInput.jobStage;
