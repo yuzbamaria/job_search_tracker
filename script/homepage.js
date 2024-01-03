@@ -30,7 +30,7 @@ function fetchAndDisplayQuote() {
 
       // adding the attributes or class
       headerEL.addClass("card-header");
-      h2El.addClass("blockquote mb-3 text-center");
+      h2El.addClass("blockquote mt-3 text-center");
       pEl.addClass("blockquote-footer mb-3 text-center");
       container.addClass("shadow");
 
