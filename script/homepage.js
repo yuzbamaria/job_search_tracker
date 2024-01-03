@@ -63,16 +63,14 @@ $(document).ready(function () {
   autoReload();
 });
 
-
 //checking for the valid url see line 95
 function isValidUrl(url) {
   // Regular expression for a simple URL validation
-  const urlPattern = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
-  
+  const urlPattern =
+    /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
 
   return urlPattern.test(url);
 }
-
 
 // Function to handle form submission
 function submitForm() {
@@ -95,7 +93,12 @@ function submitForm() {
   });
 
   // if (isEmpty || jobStageValue === "default" || jobTypeValue === "default" || !isValidUrl(positionValue)) {
-  if (isEmpty || jobStageValue === "default" || jobTypeValue === "default" || !isValidUrl(postingValue)) {
+  if (
+    isEmpty ||
+    jobStageValue === "default" ||
+    jobTypeValue === "default" ||
+    !isValidUrl(postingValue)
+  ) {
     $("#myModal").modal("show");
     closeBtn();
   } else {
@@ -250,8 +253,9 @@ function displayOnPage() {
 
 $(document).ready(function () {
   // Add event listener to the button Start Journey to link index file to the home page
-  $("#btn-dashboard").on("click", function () {
-    // Redirect the user to the 'homepage.html' page
-    window.location.pathname = "/dashboard.html";
+  $("#btn-dashboard").on("click", function (e) {
+    e.preventDefault();
+    // Redirect the user to the 'dashboard.html' page
+    location.href = "./dashboard.html";
   });
 });
