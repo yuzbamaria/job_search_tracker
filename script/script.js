@@ -9,3 +9,15 @@ homePageButton.on("click", function (e) {
   // Redirects the user to the 'homepage.html' page
   location.href = "./homepage.html"
 });
+
+// Add event listener to dashboard button to redirect to dashboard
+let dashboardButton = $("#btn-dashboard");
+
+console.log(dashboardButton);
+console.log('click to go to dashboard');
+
+dashboardButton.on("click", function (e) {
+  e.preventDefault();
+  // Redirect the user to the 'dashboard.html' page
+  location.href = "./dashboard.html"
+});
