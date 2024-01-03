@@ -23,10 +23,22 @@ $(document).ready(function() {
                 map.setCenter(results[0].geometry.location);
                 map.setZoom(6);
             } else {
-                alert('Geocode was not successful for ' + city + ': ' + status);
+                // Open a Bootstrap modal with the error message
+                $('#geoErrorModal').modal('show');
+                // Update the content of the modal
+                $('#geoErrorModal .modal-body').text('Error geocoding ' + city + ': ' + status);
+                modalCloseBtn();
             }
-        });
+        }); 
     }
+
+    function modalCloseBtn() {
+        // Event handler for modal close button click
+        $(".btn-secondary").on("click", function () {
+          $("#geoErrorModal").modal("hide");
+        });
+      }
+      
 
     // Function to remove all markers from the map
     function clearMarkers() {
