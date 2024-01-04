@@ -5,7 +5,7 @@
 2. [Features](#features)
 3. [Motivation](#motivation)
 4. [Technologies](#technologies)
-5. [Contributing](#contributing )
+5. [Collaboration](#collaboration )
 5. [Resources](#resources)
 7. [License](#license)
 
