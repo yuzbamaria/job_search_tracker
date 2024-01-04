@@ -36,9 +36,11 @@ The app also provides a map view of company locations and keeps you motivated wi
 - SO THAT to filter this data later and see how the progress goes and if I need to change my approach based on this statistics from the app.
 
 ## Technologies:
-- Google map API
-- API Ninjas (https://api-ninjas.com/api) 
-- Bootstrap
+
+- API: Google map API, API Ninjas (https://api-ninjas.com/api) 
+- Git/Github: Repo and version management.
+- React-Bootstrap: For most of the CSS styling.
+- NPM Packages: FontAwesome, react-bootstrap-icons.
 
 ## Collaboration 
 
@@ -95,9 +97,6 @@ created cards with job opportunities that get data from local storage and are re
 **1. A link to the deployed application: https://yuzbamaria.github.io/job_search_tracker/**
 
 **2. GitHub Repo: https://github.com/yuzbamaria/job_search_tracker**
-
-
-
 
 
 ## Installation
