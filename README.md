@@ -93,6 +93,7 @@ created cards with job opportunities that get data from local storage and are re
 ## Resources
 
 **1. A link to the deployed application: https://yuzbamaria.github.io/job_search_tracker/**
+
 **2. GitHub Repo: https://github.com/yuzbamaria/job_search_tracker**
 
 
