@@ -251,4 +251,16 @@ $(document).ready(function() {
 
     // Calls filterCards initially to show the default state
     filterCards();
+
+    // Redirect a user to Input page to create more cards 
+    let inputButton = $("#btn-input");
+
+    console.log(inputButton);
+    console.log('click to go to dashboard');
+
+    inputButton.on("click", function (e) {
+        e.preventDefault();
+        // Redirect the user to the 'dashboard.html' page
+        location.href = "./homepage.html"
+    });
 });

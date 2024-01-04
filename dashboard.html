@@ -25,51 +25,65 @@
             </a>
         </h3>
     </header>
-    
 
-    <section class="dashboard-section">
-        <div class="container-fluid mt-5 mb-5 ">
-            <div class="row justify-content-center">
-    
-                <!--  Filters section -->
-                <div class="dropdownContainer col-lg-9 pt-2 mt-2 pb-5 mb-5 ml-5 mr-5">
-                    <div class="card align-items-center custom-card-border shadow"
-                        style="background-color: rgb(255, 255, 255, 0.1);">
-                        <div class="card-body text-center">
-                            <h4 class="card-title m-5">FILTER MY JOB APPLICATION CARDS</h4>
-    
-                            <div class="btn-group mb-3">
-                                <button class="btn btn-success shadow" type="button" id="map-btn">
-                                    Show companies on map
-                                </button>
-                            </div>
+    <main>
+        <section class="dashboard-section">
+            <div class="container-fluid mt-5 mb-5 ">
+                <div class="row justify-content-center">
 
-                            <div class="container">
-                                <select class="form-select mb-3" id="jobTypeFilterBtn" aria-label="Example select with button addon">
-                                    <option value="default" selected>Select job type</option>
-                                    <option value="Remote">Remote</option>
-                                    <option value="Hybrid">Hybrid</option>
-                                    <option value="Office">Office</option>
-                                </select>
+                    <!--  Filters section -->
+                    <div class="dropdownContainer col-lg-9 pt-2 mt-2 pb-5 ml-5 mr-5">
+                        <div class="card align-items-center custom-card-border shadow"
+                            style="background-color: rgb(255, 255, 255, 0.1);">
+                            <div class="card-body text-center">
+                                <h4 class="card-title m-5">FILTER MY JOB APPLICATION CARDS</h4>
+
+                                <div class="btn-group mb-3">
+                                    <button class="btn btn-success shadow" type="button" id="map-btn">
+                                        Show companies on map
+                                    </button>
+                                </div>
+
+                                <div class="container">
+                                    <select class="form-select mb-3" id="jobTypeFilterBtn"
+                                        aria-label="Example select with button addon">
+                                        <option value="default" selected>Select job type</option>
+                                        <option value="Remote">Remote</option>
+                                        <option value="Hybrid">Hybrid</option>
+                                        <option value="Office">Office</option>
+                                    </select>
+                                </div>
+                                <div class="container">
+                                    <select class="form-select mb-3 mb-5" id="jobStageFilterBtn"
+                                        aria-label="Example select with button addon">
+                                        <option value="default" selected>Select job stage</option>
+                                        <option value="Applied">Applied</option>
+                                        <option value="Interview">Interview</option>
+                                        <option value="Rejected">Rejected</option>
+                                    </select>
+                                </div>
+
                             </div>
-                            <div class="container">
-                                <select class="form-select mb-3" id="jobStageFilterBtn" aria-label="Example select with button addon">
-                                    <option value="default" selected>Select job stage</option>
-                                    <option value="Applied">Applied</option>
-                                    <option value="Interview">Interview</option>
-                                    <option value="Rejected">Rejected</option>
-                                </select>
-                            </div>
-                      
                         </div>
                     </div>
-                </div>
 
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 text-center">
+                                <button class="btn btn-success shadow mb-5 mt-3" id="btn-input" type="button">Create more cards</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="row justify-content-center mb-4">
+                        <h4 class="h4 text-center headline highlight">JOBS I APPLIED</h4>
+                    </div>
+
+                    <div class="row justify-content-center" id="cardsCreation">
                 
-                <div class="row justify-content-center" id="cardsCreation">
-                    <h4 class="h4 text-center headline highlight">JOBS I APPLIED</h4> 
-                </div>
-    
+                    </div>
+
                     <!--  Job Position Card 1 -->
                     <!-- <div class="cardContainer col-lg-4 col-md-6 col-sm-9 p-3">
                         <div class="card align-items-center custom-card-border shadow">
@@ -101,43 +115,45 @@
                             </div>
                         </div>
                     </div> -->
-                    <!-- End  Job Position card 1 -->   
+                    <!-- End  Job Position card 1 -->
+                </div>
             </div>
-        </div> 
-    </section>
-    
-    <section class="map-section" id="map-section">
-        <div class="container-fluid text-center py-3 my-2 map-container">
-            <h4 class="headline highlight">COMPANIES LOCATION</h4>
-            <hr class="hr" />
-            <div class="col-12" id="map" style="height: 400px;"></div>
-        </div>
-    </section>
+        </section>
 
-    <div class="modal fade" id="geoErrorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="errorModalLabel">Error</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Error message will be dynamically updated here -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <section class="map-section" id="map-section">
+            <div class="container-fluid text-center py-3 my-2 map-container">
+                <h4 class="headline highlight">COMPANIES LOCATION</h4>
+                <hr class="hr" />
+                <div class="col-12" id="map" style="height: 400px;"></div>
+            </div>
+        </section>
+
+        <div class="modal fade" id="geoErrorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="errorModalLabel">Error</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Error message will be dynamically updated here -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-    
+    </main>
+
+
     <footer class="footer text-center py-3 px-4 custom-footer">
         © 2024 All rights reserved.
     </footer>
-    
+
     <!-- Day.js -->
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <!-- Optional JavaScript -->
@@ -150,8 +166,8 @@
         crossorigin="anonymous"></script>
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
+
     <script src="./script/dashboard.js"></script>
-    </body>
-    
-    </html>
+</body>
+
+</html>
