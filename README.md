@@ -20,6 +20,55 @@ The app provides a map view of company locations and keeps you motivated with in
 
 - SO THAT to filter this data later and see how the progress goes and if I need to change my approach based on this statistics from the app.
 
+**Technologies used:**
+- Google map API
+- API Ninjas (https://api-ninjas.com/api) 
+- Bootstrap
+
+**Challenges and Successes**
+
+**Rupesh**
+Challenges:
+- To find an API for inspiring quotes.
+- To retrieve a fresh quote every minute to provide motivation for the user.
+- To save the user's input value in the local storage so that my team member can use that input value in her page.
+
+Successes:
+- With the assistance of the TA (Steve), I was able to locate the API for retrieving the quotes.
+- I utilized the setInterval function to automatically refresh the quote every minute.
+- I utilized object and array data structures to proficiently store the user input in a manner that consistently retains the information whenever the form is submitted.
+
+**Maria**
+Challenges:
+- I was a bit challenging to work with map API to display all the markers on the map at the same time. 
+- An issue with the page load as map itself is a bit heavy and it took me some time to find out how to improve it on the initial page load.
+
+Successes:
+- Overcoming the challenge of efficiently integrating map API functionality to display multiple markers simultaneously. I devised a solution by implementing a function to place individual markers, creating an array to aggregate them, and then successfully rendering all markers on the map.
+- Addressing the issue of slow page load caused by the map's weighty nature. Through persistent effort and research, I successfully optimized the initial page load time, enhancing the overall performance.
+- Accomplishing the integration of Bootstrap styling seamlessly, further enhancing the visual appeal and user experience of the project.
+
+**Breakdown of tasks and roles**
+
+**Rupesh:** 
+Homepage:
+- Implemented code that retrieves data from API Ninjas (https://api-ninjas.com/api) in order to showcase motivational quotes to the user.
+- The user input will be stored in the local storage. However, if any of the input fields are left empty and the submit button is clicked, a modal will prompt the user to complete all the fields. If the user successfully submits the form, another modal will appear to inform the user that it has been successfully submitted.
+- The clear button is designed to reset all input fields in case the user wishes to change their selections and start anew with the form.
+- Linked this page with the dashboard page.
+
+**Maria:**
+
+Start page: 
+- Made the page and linked it with the input page and dashboard.
+
+Dashboard page: 
+- Created code that fetches data from Google map API to display all companies locations. Then, when a user clicks a button “Show companies on map”, they will be able to see all the markers at the same time. 
+created cards with job opportunities that get data from local storage and are rendered dynamically. Cards can be deleted. Also, cards contain a link “See job posting” which directs a user to the original job position they applied to.
+- Added filters to filter cards by job stage and job type. 
+- Linked this page with the Start page (by clicking Logo) and with Input page (by clicking “Create more cards”).
+
+
 
 ## 
 
