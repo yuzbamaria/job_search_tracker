@@ -17,6 +17,7 @@ main {
 footer {
     height: 10%;
     margin-top: auto;
+    font-weight: 400;
 }
 
 img {
