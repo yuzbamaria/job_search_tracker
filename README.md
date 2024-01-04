@@ -103,7 +103,10 @@ created cards with job opportunities that get data from local storage and are re
 - Added filters to filter cards by job stage and job type. 
 - Linked this page with the Start page (by clicking Logo) and with Input page (by clicking “Create more cards”).
 
-
+## Screenshots of the application
+![screenshot-start-page](assets/images/index.html.png)
+![screenshot-input-page](assets/images/homepage.html.png)
+![screenshot-dashboard-page](assets/images/dashboard.html.png)
 
 ## Resources
 
@@ -115,4 +118,3 @@ created cards with job opportunities that get data from local storage and are re
 ## Installation
 N/A
 
-## Usage
