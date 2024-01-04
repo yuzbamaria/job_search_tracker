@@ -1,35 +1,46 @@
 # Job Search Tracker App 
-As we reached week 9, we had the opportunity to work collaborate and develop a solution for a real-world problem by integrating data received from multiple server-side API requests.
 
-Considering this was our first project as a team, we started from scratch and utilized canvas to create the wireframe of the application.
+## Table of Contents
+1. [Description](#description)
+2. [Features](#features)
+3. [Motivation](#motivation)
+4. [Technologies](#technologies)
+5. [Contributing](#contributing )
+5. [Resources](#resources)
+7. [License](#license)
+
+## Description
+
+As we reached week 9, we had the opportunity to work collaborately and develop a solution for a real-world problem by integrating data received from multiple server-side API requests.
+
+Considering that this was our first project as a team, we started from scratch and utilized canvas to create the wireframe of the application.
 
 In order to facilitate effective collaboration, we utilized Trello as a tool to harness agile development methodologies. This allowed us to successfully implement various features and resolve any bugs through the use of a systematic git branch workflow and pull request system.
 
+So what we came up with is the app that organizes job search by allowing a user to note key details like job title, company name, and location (city). 
+The app also provides a map view of company locations and keeps you motivated with inspirational quotes, lets you filter job cards by type (remote, hybrid, office) and stage (applied, interview, rejected).
 
-## Description
-The app organizes your job search by allowing you to note key details like job title, company name, and location (city). 
-
-The app provides a map view of company locations and keeps you motivated with inspirational quotes, lets you filter job cards by type (remote, hybrid, office) and stage (applied, interview, rejected).
-
-**Main features:**
+## Features:
 - Provides inspirational quotes when user adds key information about opportunities.
 - Visualizes all your opportunities on a map at the same time to see the general picture.
 - Filters job cards by type (remote, hybrid, office) and stage (applied, interview, rejected).
 
-**Motivation:**
+## Motivation:
 - As we approach the completion of the bootcamp and prepare to embark on our job search, as a team we found this idea particularly resonant and meaningful on a personal level.
 
-**User story:**
+## User story:
 - AS the job seeker 
 
 - I WANT to be able to log in the key data of each job posting I apply to 
 
 - SO THAT to filter this data later and see how the progress goes and if I need to change my approach based on this statistics from the app.
 
-**Technologies used:**
+## Technologies:
 - Google map API
 - API Ninjas (https://api-ninjas.com/api) 
 - Bootstrap
+
+## Contributing 
 
 **Challenges and Successes**
 
@@ -79,17 +90,16 @@ created cards with job opportunities that get data from local storage and are re
 
 
 
-## 
+## Resources
+
+**1. A link to the deployed application**
+**2. GitHub Repo:**
+
+
+
 
 
 ## Installation
 N/A
 
 ## Usage
-
-
-## Credits
-N/A
-
-## License
-Please refer to the LICENSE in the repo.
