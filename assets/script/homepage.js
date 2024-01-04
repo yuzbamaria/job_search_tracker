@@ -1,4 +1,4 @@
-const apiKey = "GN3fBk50uO/Bo4r+mFcxFA==q2Wkb58IWKjctbbi";
+const apiKey = "81KNkZGyy9tsuu4tzltjtg==qXnTORF4NuYf8Qs8";
 
 const button = $(".btn");
 const container = $(".container-quote");
@@ -245,14 +245,7 @@ function displayOnPage() {
     $("#job-posting-btn").attr("href", "");
   });
 
-  // the below code will later
-
-  // $("#position-title").text("Position: " + userInputArray[lastIndex].position);
-  // $("#company-title").text("Company: " + userInputArray[lastIndex].company);
-  // $("#location-title").text("Location: " + userInputArray[lastIndex].location);
-  // $("#posting-title").text("Posting: " + userInputArray[lastIndex].posting);
-  // $("#job-stage-title").text("JobStage: " + userInputArray[lastIndex].jobStage);
-  // $("#job-type-title").text("JobType: " + userInputArray[lastIndex].jobType);
+ 
 }
 
 $(document).ready(function () {
