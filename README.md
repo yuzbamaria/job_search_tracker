@@ -118,3 +118,5 @@ created cards with job opportunities that get data from local storage and are re
 ## Installation
 N/A
 
+## License 
+MIT License
