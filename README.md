@@ -1,4 +1,10 @@
 # Job Search Tracker App 
+As we reached week 9, we had the opportunity to work collaborate and develop a solution for a real-world problem by integrating data received from multiple server-side API requests.
+
+Considering this was our first project as a team, we started from scratch and utilized canvas to create the wireframe of the application.
+
+In order to facilitate effective collaboration, we utilized Trello as a tool to harness agile development methodologies. This allowed us to successfully implement various features and resolve any bugs through the use of a systematic git branch workflow and pull request system.
+
 
 ## Description
 The app organizes your job search by allowing you to note key details like job title, company name, and location (city). 
