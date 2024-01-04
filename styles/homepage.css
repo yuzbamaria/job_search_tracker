@@ -23,6 +23,7 @@ body {
 } */
 
 /* .common-container {
+  
 } */
 
 .container-quote {
@@ -38,9 +39,6 @@ body {
   align-items: center;
 }
 
-.container {
-  /* padding: 10px; */
-}
 .quote-footer {
   color: black;
 }
@@ -114,8 +112,8 @@ body {
   #quote-section {
     height: fit-content;
   }
-}  */
+} 
 
 
 
-
+ */
