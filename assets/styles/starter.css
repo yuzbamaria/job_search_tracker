@@ -19,9 +19,16 @@ footer {
     margin-top: auto;
 }
 
+img {
+    max-width: 70%; 
+    height: auto;
+}
+
 .custom-header {
     background-image: linear-gradient(to right top, #01473f, #0a704d, #489849, #91be35, #ebdd12);
     color:white;
+    display: flex;
+    align-items: center;
  }
  
  .custom-logo {
@@ -39,5 +46,6 @@ footer {
 
  .custom-footer {
     background-color: #e99607;
+    align-items: center;
 }
 
