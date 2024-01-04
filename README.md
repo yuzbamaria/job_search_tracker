@@ -11,14 +11,14 @@ The app provides a map view of company locations and keeps you motivated with in
 - Filters job cards by type (remote, hybrid, office) and stage (applied, interview, rejected).
 
 **Motivation:**
-As we approach the completion of the bootcamp and prepare to embark on our job search, as a team we found this idea particularly resonant and meaningful on a personal level.
+- As we approach the completion of the bootcamp and prepare to embark on our job search, as a team we found this idea particularly resonant and meaningful on a personal level.
 
 **User story:**
-AS the job seeker 
+- AS the job seeker 
 
-I WANT to be able to log in the key data of each job posting I apply to 
+- I WANT to be able to log in the key data of each job posting I apply to 
 
-SO THAT to filter this data later and see how the progress goes and if I need to change my approach based on this statistics from the app.
+- SO THAT to filter this data later and see how the progress goes and if I need to change my approach based on this statistics from the app.
 
 
 ## 
