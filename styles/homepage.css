@@ -1,42 +1,121 @@
-
-
 body {
   margin: 0;
   padding: 0;
   font-family: "Roboto", sans-serif !important;
-  background-image: linear-gradient(to right top, #01473f, #0a704d, #489849, #91be35, #ebdd12);
-  /* background-color: #cbe896; */
-  text-align: center;
+  background-image: linear-gradient(
+    to right top,
+    #01473f,
+    #0a704d,
+    #489849,
+    #91be35,
+    #ebdd12
+  );
+}
+.custom-header {
+  background-color: white;
+  color: #01473f;
+}
+.custom-logo {
+  margin-left: 25px;
+}
+/* main {
+  height: 90vh;
+} */
+
+.common-container {
 }
 
-.container-quote{
-
-  background-color:#D3F3EE;
-  min-height: 100px;
+.container-quote {
+  padding-left: 200px;
+  padding-right: 200px;
 }
 
-.form{
+#quote-section {
+  height: 10%; /* Set the container height to 100% of the viewport height */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  /* padding: 10px; */
+}
+.quote-footer {
+  color: black;
+}
+
+.form {
   margin-top: 10px;
   padding: 10px;
-  
 }
 
-.form p{
+.form p {
   font-size: 1.5rem;
- 
 }
 
-#job-stage, #job-type {
+#job-stage,
+#job-type {
   display: inline;
   width: 50%;
 }
 
-
-#submit-button, #clear-button{
+#submit-button,
+#clear-button {
   margin: 10px;
-  
 }
 
 .custom-footer {
   background-color: #e99607;
 }
+
+/* MEDIA QUERY */
+/* @media only screen and (max-width: 1200px) {
+  main {
+    height: 10vh;
+  }
+
+  #quote-section {
+    height: 20vh;
+  }
+}
+@media only screen and (min-width: 768px) {
+  main {
+    height: 195vh;
+  }
+
+  #quote-section {
+    height: fit-content;
+  }
+} */
+@media only screen and (max-width: 600px) {
+  main {
+    height: 260vh;
+  }
+
+  #quote-section {
+    height: fit-content;
+  }
+} 
+@media only screen and (max-width: 768px) {
+  main {
+    height: 220vh;
+  }
+
+  #quote-section {
+    height: fit-content;
+  }
+} 
+@media only screen and (max-width: 1200px) {
+  main {
+    height: 155vh;
+  }
+
+  #quote-section {
+    height: fit-content;
+  }
+} 
+
+
+
+

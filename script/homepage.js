@@ -30,9 +30,13 @@ function fetchAndDisplayQuote() {
 
       // adding the attributes or class
       headerEL.addClass("card-header");
-      h2El.addClass("blockquote mt-3 text-center");
-      pEl.addClass("blockquote-footer mb-3 text-center");
-      container.addClass("shadow");
+      h2El.addClass(
+        "blockquote text-center fs-3 fst-italic font-monospace pt-3"
+      );
+      pEl.addClass("blockquote-footer text-center quote-footer py-1");
+
+      divEl.addClass("common-container mx-5 my-5");
+      // container.addClass("shadow");
 
       // Adding text
       headerEL.text(data[0].category);
@@ -41,9 +45,9 @@ function fetchAndDisplayQuote() {
 
       // Append to the respective element
       pEl.append(citeEl);
-      container.append(divEl);
       divEl.append(h2El);
       divEl.append(pEl);
+      container.append(divEl);
     })
     .catch((error) => console.error("Error fetching or parsing data:", error));
 }
