@@ -40,6 +40,7 @@ Successes:
 - I utilized object and array data structures to proficiently store the user input in a manner that consistently retains the information whenever the form is submitted.
 
 **Maria**
+
 Challenges:
 - I was a bit challenging to work with map API to display all the markers on the map at the same time. 
 - An issue with the page load as map itself is a bit heavy and it took me some time to find out how to improve it on the initial page load.
@@ -52,6 +53,7 @@ Successes:
 **Breakdown of tasks and roles**
 
 **Rupesh:** 
+
 Homepage:
 - Implemented code that retrieves data from API Ninjas (https://api-ninjas.com/api) in order to showcase motivational quotes to the user.
 - The user input will be stored in the local storage. However, if any of the input fields are left empty and the submit button is clicked, a modal will prompt the user to complete all the fields. If the user successfully submits the form, another modal will appear to inform the user that it has been successfully submitted.
