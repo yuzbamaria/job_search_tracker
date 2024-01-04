@@ -181,10 +181,10 @@ function displayOnPage() {
     const iconMap = {
       position: '<i class="fa-solid fa-clipboard-user" id="position-icon"></i>',
       company: '<i class="fa-regular fa-building"></i>',
-      location: '<i class="fa-solid fa-map-location-dot"></i>',
+      location: '<i class="fa-solid fa-location-arrow"></i>',
       // posting: '<i class="fa-solid fa-signs-post"></i>',
       jobStage: '<i class="fa-solid fa-stairs"></i>',
-      jobType: '<i class="fa-solid fa-briefcase"></i>',
+      jobType: '<i class="fa-solid fa-house-laptop"></i>',
     };
 
     // Displaying the user input with icons
@@ -194,7 +194,7 @@ function displayOnPage() {
 
     // adding the new content
     $("#position-title").append(
-      `${iconMap.position} Position: ${userInputArray[lastIndex].position}`
+      `${userInputArray[lastIndex].position}`
     );
     // for readiblilty the above code can be writtten as below without using backticks (`). (`) backticks sign are use to create template literals, which provide a convenient way to concatenate strings and variables in a readable and flexible manner.
 
@@ -202,12 +202,12 @@ function displayOnPage() {
 
     $("#company-title").empty();
     $("#company-title").append(
-      `${iconMap.company} Company Name: ${userInputArray[lastIndex].company}`
+      `${userInputArray[lastIndex].company}`
     );
 
     $("#location-title").empty();
     $("#location-title").append(
-      `${iconMap.location} Job Location: ${userInputArray[lastIndex].location}`
+      `${iconMap.location} City: ${userInputArray[lastIndex].location}`
     );
     // $("#posting-title").append(
     //   `${iconMap.posting} Posting: ${userInputArray[lastIndex].posting}`

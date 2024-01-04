@@ -105,7 +105,7 @@
 
           <!-- location input -->
           <div class="col-sm-12 col-md-6 col-lg-6">
-            <p>Job Location</p>
+            <p>City</p>
             <div>
               <form class="container text-center">
                 <div class="mb-4">
@@ -140,22 +140,7 @@
             </div>
           </div>
 
-          <!-- ask team member -->
-          <!-- <div class="container"> -->
-          <div class="col-md-6 col-lg-6">
-            <p>Job Stage</p>
-            <select
-              class="form-select mb-4"
-              id="job-stage"
-              aria-label="Example select with button addon"
-            >
-              <option value="default" selected>Choose...</option>
-
-              <option value="Applied">Applied</option>
-              <option value="Interview">Interview</option>
-              <option value="Rejected">Rejected</option>
-            </select>
-          </div>
+          
 
           <!-- ask team member -->
 
@@ -175,6 +160,22 @@
             </select>
           </div>
 
+          <!-- ask team member -->
+          <!-- <div class="container"> -->
+            <div class="col-md-6 col-lg-6">
+              <p>Job Stage</p>
+              <select
+                class="form-select mb-4"
+                id="job-stage"
+                aria-label="Example select with button addon"
+              >
+                <option value="default" selected>Choose...</option>
+  
+                <option value="Applied">Applied</option>
+                <option value="Interview">Interview</option>
+                <option value="Rejected">Rejected</option>
+              </select>
+            </div>
           <!-- submit button -->
 
           <!-- <div class="col"> -->
@@ -202,7 +203,7 @@
         <div class="row justify-content-center mt-5 mb-5">
           <div class="cardContainer col-lg-4 col-md-6 col-sm-9 p-3">
             <article class="card align-items-center custom-card-border shadow">
-              <div class="card-body">
+              <div class="card-body text-center">
                 <div class="text-center mt-3">
                   <h5 class="card-title">Submitted Info</h5>
                 </div>
@@ -216,17 +217,17 @@
                     Company Name:
                   </p>
                   <p class="card-text" id="location-title">
-                    <i class="fa-solid fa-map-location-dot"></i>
-                    Job Location:
+                    <i class="fa-solid fa-location-arrow"></i>
+                    City:
                   </p>
 
+                  <p class="card-text" id="job-type-title">
+                    <i class="fa-solid fa-house-laptop"></i>
+                    Job Type:
+                  </p>
                   <p class="card-text" id="job-stage-title">
                     <i class="fa-solid fa-stairs"></i>
                     Job Stage:
-                  </p>
-                  <p class="card-text" id="job-type-title">
-                    <i class="fa-solid fa-briefcase"></i>
-                    Job Type:
                   </p>
                 </div>
                 <br />
