@@ -27,14 +27,15 @@ The app also provides a map view of company locations and keeps you motivated wi
 
 ## Future Enhancements:
 
--Add statistics on:
-  -how many applications got the job stage status: rejected, interview, applied; 
-  -how many applications were added per month; 
+- Add statistics on:
+  - how many applications got the job stage status: rejected, interview, applied; 
+  - how many applications were added per month; 
   
--Fix the small issue with the map rendering on initial load on big resolution screens as it loads there a bit slow and sometimes after the page is refreshed. 
--Add an input for interview dates and Integrate calendar API to access dates for interviews.
+- Fix the small issue with the map rendering on initial load on big resolution screens as it loads there a bit slow and sometimes after the page is refreshed.
+  
+- Add an input for interview dates and Integrate calendar API to access dates for interviews.
 
--Add a functionality to be able to edit each card that is already created. 
+- Add a functionality to be able to edit each card that is already created. 
 
 
 ## Motivation:
