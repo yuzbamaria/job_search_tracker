@@ -40,7 +40,7 @@ The app also provides a map view of company locations and keeps you motivated wi
 - API Ninjas (https://api-ninjas.com/api) 
 - Bootstrap
 
-## Contributing 
+## Collaboration 
 
 **Challenges and Successes**
 
