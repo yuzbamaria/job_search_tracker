@@ -28,6 +28,7 @@ The app provides a map view of company locations and keeps you motivated with in
 **Challenges and Successes**
 
 **Rupesh**
+
 Challenges:
 - To find an API for inspiring quotes.
 - To retrieve a fresh quote every minute to provide motivation for the user.
