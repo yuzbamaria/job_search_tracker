@@ -35,7 +35,7 @@ function fetchAndDisplayQuote() {
       );
       pEl.addClass("blockquote-footer text-center quote-footer py-1");
 
-      divEl.addClass("common-container mx-5 my-5");
+      divEl.addClass("common-container mx-5 my-2");
       // container.addClass("shadow");
 
       // Adding text
