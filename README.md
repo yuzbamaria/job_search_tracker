@@ -40,7 +40,7 @@ The app also provides a map view of company locations and keeps you motivated wi
 - API: Google map API, API Ninjas (https://api-ninjas.com/api) 
 - Git/Github: Repo and version management.
 - Bootstrap: For most of the CSS styling.
-- NPM Packages: FontAwesome, react-bootstrap-icons.
+- NPM Packages: FontAwesome, bootstrap-icons.
 
 ## Collaboration 
 
