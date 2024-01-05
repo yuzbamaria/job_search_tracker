@@ -54,11 +54,11 @@ $(document).ready(function() {
             center: { lat: 51.50739669799805, lng: -0.12753255665302277 },
             zoom: 6,
         });
-        // Execute your custom function when the map is idle
-  google.maps.event.addListenerOnce(map, 'idle', function() {
-    // Your custom function goes here
-    console.log('Google Maps is ready!');
-  });
+        console.log(map);
+        // Execute unutMap when the map is idle
+        google.maps.event.addListenerOnce(map, 'idle', function () {
+            console.log('Google Maps is ready!');
+        });
     }
 
     // Select the "map" button
@@ -88,88 +88,6 @@ $(document).ready(function() {
     $(function() {
         initMap();
     });
-
-
-
-    // // Function to store the city list in local storage
-    // function storeCityList() {
-    //     localStorage.setItem('city-names', JSON.stringify(citiesArray));
-    // }
-
-    // function addMarkerForCity(city) {
-    //     let geocoder = new google.maps.Geocoder();
-    //     geocoder.geocode({ address: city }, function (results, status) {
-    //         if (status === 'OK') {
-    //             // Create a new marker for this city
-    //             new google.maps.Marker({
-    //                 map: map,
-    //                 position: results[0].geometry.location,
-    //                 title: city,
-    //             });
-    //             map.setCenter(results[0].geometry.location);
-    //             map.setZoom(6);
-    //         } else {
-    //             // Open a Bootstrap modal with the error message
-    //             $('#geoErrorModal').modal('show');
-    //             // Update the content of the modal
-    //             $('#geoErrorModal .modal-body').text('Error geocoding ' + city + ': ' + status);
-    //             modalCloseBtn();
-    //         }
-    //     }); 
-    // }
-
-    // function modalCloseBtn() {
-    //     // Event handler for modal close button click
-    //     $(".btn-secondary").on("click", function () {
-    //       $("#geoErrorModal").modal("hide");
-    //     });
-    //   }
-      
-
-    // // Function to remove all markers from the map
-    // function clearMarkers() {
-    //     // Remove all markers from the map
-    //     markers.forEach(function (marker) {
-    //         marker.setMap(null);
-    //     });
-    // }
-    // // Create a new Google Map and associate it with the HTML element with the ID 'map'
-    // function initMap() {
-    //     map = new google.maps.Map(document.getElementById('map'), {
-    //         // Set the initial center of the map to the coordinates
-    //         center: { lat: 51.50739669799805, lng: -0.12753255665302277 },
-    //         zoom: 6,
-    //     });
-    // }
-
-    // // Select the "map" button
-    // let showCompaniesOnMap = $('#map-btn');
-    // // Attach an event listener to the "Search" button
-    // showCompaniesOnMap.on('click', function (e) {
-    //     // Prevent the default form submission behavior
-    //     e.preventDefault();
-    //     // Scroll to the map section
-    //     $('html, body').animate({
-    //         scrollTop: $('#map-section').offset().top
-    //     }, 1000);
-    //     clearMarkers(); // Clear existing markers before displaying all
-    //     // Retrieve the location value from local storage
-    //     let cityInput = localStorage.getItem('userInputArray');
-    //     if (cityInput) {
-    //         citiesArray = JSON.parse(cityInput);
-    //         citiesArray.forEach((userInputArray) => {
-    //             console.log(userInputArray.location);
-    //             addMarkerForCity(userInputArray.location);
-    //         });
-    //         // Store the updated city list in local storage
-    //         storeCityList();
-    //     }
-    // });
-
-    // $(function() {
-    //     initMap();
-    // });
-
 
     // CREATES CARDS
     // Function to create a card based on user input
