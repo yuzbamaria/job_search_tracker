@@ -54,6 +54,11 @@ $(document).ready(function() {
             center: { lat: 51.50739669799805, lng: -0.12753255665302277 },
             zoom: 6,
         });
+        // Execute your custom function when the map is idle
+  google.maps.event.addListenerOnce(map, 'idle', function() {
+    // Your custom function goes here
+    console.log('Google Maps is ready!');
+  });
     }
 
     // Select the "map" button
